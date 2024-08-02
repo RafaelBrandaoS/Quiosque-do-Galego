@@ -7,71 +7,75 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../static/estilos/home.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='estilos/home.css') }}">
     <title>Quiosque do Galego</title>
 </head>
 <body>
     <header>
-        <a href="#"><img src="../static/imagens/logo.png" alt="Logo"></a>
+        <a href="#"><img src="{{ url_for('static', filename='imagens/logo.png') }}" alt="Logo"></a>
         <span class="material-symbols-outlined carrinho">shopping_cart</span>
     </header>
     <main>
         <section class="apresentacao">
             <h2>Bateu Aquela fome?</h2>
             <h3>Faça já seu pedido!</h3>
-            <img src="../static/imagens/comidaDeButeco.png" alt="comida de buteco">
+            <img src="{{ url_for('static', filename='imagens/comidaDeButeco.png') }}" alt="comida de buteco">
         </section>
         <nav class="sessoes">
-            <a href="#">Almoço executivo</a>
-            <a href="#">Petiscos</a>
-            <a href="#">Sobremesas</a>
-            <a href="#">espetinhos</a>
-            <a href="#">jantinha</a>
-            <a href="#">pão delicia</a>
-            <a href="#">caldo</a>
-            <a href="#">Bebidas Diversas</a>
-            <a href="#">cervejas long neck</a>
+            {% for sessao in sessoes %}
+            {% if sessao[3] == 'disponivel' %}
+                <a class="nav-link" data-section="{{ sessao[2] }}" href="{{ url_for( sessao[2] ) }}">{{ sessao[1] }} {{ sessao[3] }}</a>
+            {% endif %}
+            {% endfor %}
         </nav>
         <section class="produtos">
             <div class="conteiner-produtos">
-                <div class="produto">
-                    <img src="../static/imagens/produtos/bacon.jpg" alt="produto img">
-                    <div class="dados-produto">
-                        <p class="nome-produto">Nome Produto</p>
-                        <p class="p-preco">R$ <span>99.99</span></p>
+                {% if sessoes[0][3] == 'disponivel' %}
+                    {% for prato in pratosfds %}
+                    <div class="produto">
+                        <img src="{{ prato[3] }}" alt="produto img">
+                        <div class="dados-produto">
+                            <p class="nome-produto">{{ prato[1] }}</p>
+                            <p class="p-preco">R$ <span>{{ prato[2] }}</span></p>
+                        </div>
                     </div>
-                </div>
-                <div class="produto">
-                    <img src="../static/imagens/produtos/bacon.jpg" alt="produto img">
-                    <div class="dados-produto">
-                        <p class="nome-produto">Nome Produto</p>
-                        <p class="p-preco">R$ <span>99.99</span></p>
+                    {% endfor %}
+                {% else %}
+                    {% for prato in pratossem %}
+                    <div class="produto">
+                        <img src="{{ prato[3] }}" alt="produto img">
+                        <div class="dados-produto">
+                            <p class="nome-produto">{{ prato[1] }}</p>
+                            <p class="p-preco">R$ <span>{{ prato[2] }}</span></p>
+                        </div>
                     </div>
-                </div>
-                <div class="produto">
-                    <img src="../static/imagens/produtos/bacon.jpg" alt="produto img">
-                    <div class="dados-produto">
-                        <p class="nome-produto">Nome Produto</p>
-                        <p class="p-preco">R$ <span>99.99</span></p>
-                    </div>
-                </div>
-                <div class="produto">
-                    <img src="../static/imagens/produtos/bacon.jpg" alt="produto img">
-                    <div class="dados-produto">
-                        <p class="nome-produto">Nome Produto</p>
-                        <p class="p-preco">R$ <span>99.99</span></p>
-                    </div>
-                </div>
-                <div class="produto">
-                    <img src="../static/imagens/produtos/bacon.jpg" alt="produto img">
-                    <div class="dados-produto">
-                        <p class="nome-produto">Nome Produto</p>
-                        <p class="p-preco">R$ <span>99.99</span></p>
-                    </div>
-                </div>
+                    {% endfor %}
+                {% endif %}
             </div>
         </section>
     </main>
+    <div class="detalhes">
+        <div class="dados-detalhes">
+            <img src="{{ pratosfds[0][3] }}" alt="produto[1]">
+            <div>
+                <h2 class="nome-detalhes">Nome do produto</h2>
+                <p>R$ <samp>22.22</samp></p>
+                <h3>Escolha 4 acompanhamentos.</h3>
+                <p>extra será cobrado R$ x.xx a mais</p>
+                <div class="acompanhamentos">
+                    <label for="arroz"><input type="checkbox" name="arroz" id="arroz"> Arroz</label>
+                    <label for="batata"><input type="checkbox" name="batata" id="batata"> Batata Frita</label>
+                    <label for="farofa"><input type="checkbox" name="farofa" id="farofa"> Farofa da Casa</label>
+                    <label for="caldo"><input type="checkbox" name="caldo" id="caldo"> Feijão de Caldo</label>
+                    <label for="tropeiro"><input type="checkbox" name="tropeiro" id="tropeiro"> Feijão Tropeiro</label>
+                    <label for="mandioca"><input type="checkbox" name="mandioca" id="mandioca"> Mandioca Cozida</label>
+                    <label for="ovo"><input type="checkbox" name="ovo" id="ovo"> Ovo Frito</label>
+                    <label for="arroz"><input type="checkbox" name="arroz" id="arroz"> Salada Alface e Tomate</label>
+                    <label for="obs">Observação: <input type="text" name="obs" id="obs"></label>
+                </div>
+            </div>
+        </div>
+    </div>
     <footer>
         <div class="sociais">
             <h3>REDES SOCIAIS:</h3>
@@ -95,5 +99,6 @@
         </div>
     </footer>
     <p class="creditos">site criado por <a href="#">Rafael Brandão</a></p>
+    <script src="{{ url_for('static', filename='js/nav.js') }}"></script>
 </body>
 </html>

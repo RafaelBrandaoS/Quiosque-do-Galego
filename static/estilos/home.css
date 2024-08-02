@@ -85,6 +85,7 @@ header > a > img {
 
 .produtos {
     padding: 10px;
+    min-height: calc(100vh - 318px);
 }
 
 .conteiner-produtos {
@@ -97,7 +98,13 @@ header > a > img {
 .produto {
     width: 150px;
     border-radius: 10px;
-    box-shadow: 0px 0px 5px #ff840071;
+    box-shadow: 0px 0px 10px #ff840089;
+}
+
+.produto-1 {
+    width: 100%;
+    display: flex;
+    justify-content: start;
 }
 
 .produto > img {
@@ -106,9 +113,23 @@ header > a > img {
     border-radius: 10px 10px 0px 0px;
 }
 
+img.produto-img {
+    width: 150px;
+    border-radius: 10px 0px 0px 10px;
+    box-shadow: 2px 0px 3px rgba(0, 0, 0, 0.405);
+}
+
 .dados-produto {
     padding: 0px 10px;
     padding-bottom: 10px;
+}
+
+div.dados-produto-1 {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: column;
 }
 
 .nome-produto {
@@ -120,6 +141,47 @@ header > a > img {
     font-size: .9em;
     font-weight: 600;
     color: #0f820f;
+}
+
+.detalhes {
+    position: fixed;
+    z-index: 100;
+    width: 90%;
+    top: 100px;
+    border: 1px solid black;
+    background-color: #fff;
+    padding: 10px;
+    max-width: 550px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    transition: 0.5s;
+}
+
+.dados-detalhes {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: flex-start;
+}
+
+.dados-detalhes > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.dados-detalhes > img {
+    width: 200px;
+}
+
+.acompanhamentos {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 5px;
 }
 
 footer {

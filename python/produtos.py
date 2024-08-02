@@ -1,0 +1,132 @@
+from python.conexao import criar_conexao, fexar_conexão
+
+
+def sessoes():
+    con = criar_conexao()
+    cursor = con.cursor()
+    sql = "select * from sessoes"
+    cursor.execute(sql)
+    sessoes = cursor.fetchall()
+    cursor.close()
+    fexar_conexão(cursor)
+    return sessoes
+
+
+def pratosFds():
+    con = criar_conexao()
+    cursor = con.cursor()
+    sql = "select * from produtos where sessao_id = '1'"
+    cursor.execute(sql)
+    produtos = cursor.fetchall()
+    cursor.close()
+    fexar_conexão(con)
+    return produtos
+
+
+def pratosSem():
+    con = criar_conexao()
+    cursor = con.cursor()
+    sql = "select * from produtos where sessao_id = '2'"
+    cursor.execute(sql)
+    produtos = cursor.fetchall()
+    cursor.close()
+    fexar_conexão(con)
+    return produtos
+
+
+def petiscos():
+    con = criar_conexao()
+    cursor = con.cursor()
+    sql = "select * from produtos where sessao_id = '3'"
+    cursor.execute(sql)
+    produtos = cursor.fetchall()
+    cursor.close()
+    fexar_conexão(con)
+    return produtos
+
+def sobremesas():
+    con = criar_conexao()
+    cursor = con.cursor()
+    sql = "select * from produtos where sessao_id = '4'"
+    cursor.execute(sql)
+    produtos = cursor.fetchall()
+    cursor.close()
+    fexar_conexão(con)
+    return produtos
+
+
+def espetinhos():
+    con = criar_conexao()
+    cursor = con.cursor()
+    sql = "select * from produtos where sessao_id = '5'"
+    cursor.execute(sql)
+    produtos = cursor.fetchall()
+    cursor.close()
+    fexar_conexão(con)
+    return produtos
+
+
+def jantinhas():
+    con = criar_conexao()
+    cursor = con.cursor()
+    sql = "select * from produtos where sessao_id = '6'"
+    cursor.execute(sql)
+    produtos = cursor.fetchall()
+    cursor.close()
+    fexar_conexão(con)
+    return produtos
+
+
+def espetinhosGourmet():
+    con = criar_conexao()
+    cursor = con.cursor()
+    sql = "select * from produtos where sessao_id = '7'"
+    cursor.execute(sql)
+    produtos = cursor.fetchall()
+    cursor.close()
+    fexar_conexão(con)
+    return produtos
+
+
+def paoDelicia():
+    con = criar_conexao()
+    cursor = con.cursor()
+    sql = "select * from produtos where sessao_id = '8'"
+    cursor.execute(sql)
+    produtos = cursor.fetchall()
+    cursor.close()
+    fexar_conexão(con)
+    return produtos
+
+
+def caldos():
+    con = criar_conexao()
+    cursor = con.cursor()
+    sql = "select * from produtos where sessao_id = '9'"
+    cursor.execute(sql)
+    produtos = cursor.fetchall()
+    cursor.close()
+    fexar_conexão(con)
+    return produtos
+
+
+def diversas():
+    con = criar_conexao()
+    cursor = con.cursor()
+    sql = "select * from produtos where sessao_id = '10'"
+    cursor.execute(sql)
+    produtos = cursor.fetchall()
+    cursor.close()
+    fexar_conexão(con)
+    return produtos
+
+
+def cervejasLong():
+    con = criar_conexao()
+    cursor = con.cursor()
+    sql = "select * from produtos where sessao_id = '11'"
+    cursor.execute(sql)
+    produtos = cursor.fetchall()
+    cursor.close()
+    fexar_conexão(con)
+    return produtos

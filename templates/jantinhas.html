@@ -1,0 +1,11 @@
+<div class="conteiner-produtos">
+    {% for produto in produtos %}
+    <div class="produto">
+        <img src="{{ produto[3] }}" alt="produto img">
+        <div class="dados-produto">
+            <p class="nome-produto">{{ produto[1] }}</p>
+            <p class="p-preco">R$ <span>{{ produto[2] }}</span></p>
+        </div>
+    </div>
+    {% endfor %}
+</div>

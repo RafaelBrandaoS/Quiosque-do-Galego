@@ -1,0 +1,36 @@
+<div class="conteiner-produtos">
+    {% for produto in produtos %}
+    <div class="produto">
+        <img src="{{ produto[3] }}" alt="{{ produto[1] }}">
+        <div class="dados-produto">
+            <p class="nome-produto">{{ produto[1] }}</p>
+            <p class="p-preco">R$ <span>{{ produto[2] }}</span></p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+<div class="detalhes">
+    <div class="dados-detalhes">
+        <img src="#" alt="produto[1]">
+        <h2 class="nome-detalhes">produto[1]</h2>
+        <p>R$ <samp>produto[2]</samp></p>
+    </div>
+    <div class="c-acompanhamentos">
+        <h3>Escolha 4 acompanhamentos.</h3>
+        <p>extra será cobrado R$ x.xx a mais</p>
+        <div class="acompanhamentos">
+            <label for="arroz"><input type="checkbox" name="arroz" id="arroz"> Arroz</label>
+            <label for="batata"><input type="checkbox" name="batata" id="batata"> Batata Frita</label>
+            <label for="farofa"><input type="checkbox" name="farofa" id="farofa"> Farofa da Casa</label>
+            <label for="caldo"><input type="checkbox" name="caldo" id="caldo"> Feijão de Caldo</label>
+            <label for="tropeiro"><input type="checkbox" name="tropeiro" id="tropeiro"> Feijão Tropeiro</label>
+            <label for="mandioca"><input type="checkbox" name="mandioca" id="mandioca"> Mandioca Cozida</label>
+            <label for="ovo"><input type="checkbox" name="ovo" id="ovo"> Ovo Frito</label>
+            <label for="arroz"><input type="checkbox" name="arroz" id="arroz"> Salada Alface e Tomate</label>
+            <label for="obs">Observação: <input type="text" name="obs" id="obs"></label>
+        </div>
+    </div>
+</div>
+

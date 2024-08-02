@@ -1,0 +1,12 @@
+<div class="conteiner-produtos">
+    {% for produto in produtos %}
+    <div class="produto produto-1">
+        <img class="produto-img" src="{{ produto[3] }}" alt="produto img">
+        <div class="dados-produto dados-produto-1">
+            <p class="nome-produto">{{ produto[1] }}</p>
+            <p>150 gramas de pudim tradicional de leite condensado.</p>
+            <p class="p-preco">R$ <span>{{ produto[2] }}</span></p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
