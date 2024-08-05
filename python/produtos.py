@@ -15,7 +15,7 @@ def sessoes():
 def pratosFds():
     con = criar_conexao()
     cursor = con.cursor()
-    sql = "select * from produtos where sessao_id = '1'"
+    sql = "select * from produtos where sessao_id = '1' order by p_nome"
     cursor.execute(sql)
     produtos = cursor.fetchall()
     cursor.close()
@@ -26,7 +26,7 @@ def pratosFds():
 def pratosSem():
     con = criar_conexao()
     cursor = con.cursor()
-    sql = "select * from produtos where sessao_id = '2'"
+    sql = "select * from produtos where sessao_id = '2' order by p_nome"
     cursor.execute(sql)
     produtos = cursor.fetchall()
     cursor.close()
@@ -58,7 +58,7 @@ def sobremesas():
 def espetinhos():
     con = criar_conexao()
     cursor = con.cursor()
-    sql = "select * from produtos where sessao_id = '5'"
+    sql = "select * from produtos where sessao_id = '5' order by p_nome"
     cursor.execute(sql)
     produtos = cursor.fetchall()
     cursor.close()
@@ -102,7 +102,7 @@ def paoDelicia():
 def caldos():
     con = criar_conexao()
     cursor = con.cursor()
-    sql = "select * from produtos where sessao_id = '9'"
+    sql = "select * from produtos where sessao_id = '9' order by p_nome"
     cursor.execute(sql)
     produtos = cursor.fetchall()
     cursor.close()
@@ -113,7 +113,7 @@ def caldos():
 def diversas():
     con = criar_conexao()
     cursor = con.cursor()
-    sql = "select * from produtos where sessao_id = '10'"
+    sql = "select * from produtos where sessao_id = '10' order by p_nome"
     cursor.execute(sql)
     produtos = cursor.fetchall()
     cursor.close()
@@ -124,7 +124,7 @@ def diversas():
 def cervejasLong():
     con = criar_conexao()
     cursor = con.cursor()
-    sql = "select * from produtos where sessao_id = '11'"
+    sql = "select * from produtos where sessao_id = '11' order by p_nome"
     cursor.execute(sql)
     produtos = cursor.fetchall()
     cursor.close()

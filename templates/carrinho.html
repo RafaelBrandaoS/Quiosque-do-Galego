@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='estilos/home.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='estilos/carrinho.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='imagens/favicon.ico') }}" type="image/x-icon">
+    <title>Carrinho - Quiosque do Galego</title>
+</head>
+<body>
+    <header>
+        <a href="#"><img src="{{ url_for('static', filename='imagens/logo.png') }}" alt="Logo"></a>
+        <div>
+            <a href="{{ url_for('home') }}"><span class="material-symbols-outlined carrinho">undo</span></a>
+            <a href="#"><span class="material-symbols-outlined carrinho">shopping_cart</span></a>
+        </div>
+    </header>
+    <main>
+        <section class="carrinho-produtos">
+            <div class="produto-n-carrinho">
+                <img class="imagem-produto-carrinho" src="https://avatars.mds.yandex.net/i?id=7e32cc9bc7526f752a9c0ef6cb0b89d7dc12b583-4599887-images-thumbs&n=13" alt="">
+                <div>
+                    <h3 class="nome-produto-carrinho">Nome do Produto</h3>
+                    <p class="acompanhamentos-carrinho">Acompanhamentos: Arroz, Feijão Tropeiro, Mandioca Cozida</p>
+                    <p class="obs-carrinho">Obs: <span>Pouco arroz</span></p>
+                    <div class="butoes-produto-carrinho">
+                        <div><span>Qtd: </span><span>-</span><span>1</span><span>+</span></div>
+                        <a>Remover</a>
+                    </div>
+                </div>
+            </div>
+            <div class="produto-n-carrinho">
+                <img class="imagem-produto-carrinho" src="https://avatars.mds.yandex.net/i?id=7e32cc9bc7526f752a9c0ef6cb0b89d7dc12b583-4599887-images-thumbs&n=13" alt="">
+                <div>
+                    <h3 class="nome-produto-carrinho">Nome do Produto</h3>
+                    <p class="acompanhamentos-carrinho">Acompanhamentos: Arroz, Feijão Tropeiro, Mandioca Cozida</p>
+                    <p class="obs-carrinho">Obs: <span>Pouco arroz</span></p>
+                    <div class="butoes-produto-carrinho">
+                        <div><span>Qtd: </span><span>-</span><span>1</span><span>+</span></div>
+                        <a>Remover</a>
+                    </div>
+                </div>
+            </div>
+            <div class="produto-n-carrinho">
+                <img class="imagem-produto-carrinho" src="https://avatars.mds.yandex.net/i?id=7e32cc9bc7526f752a9c0ef6cb0b89d7dc12b583-4599887-images-thumbs&n=13" alt="">
+                <div>
+                    <h3 class="nome-produto-carrinho">Nome do Produto</h3>
+                    <p class="acompanhamentos-carrinho">Acompanhamentos: Arroz, Feijão Tropeiro, Mandioca Cozida</p>
+                    <p class="obs-carrinho">Obs: <span>Pouco arroz</span></p>
+                    <div class="butoes-produto-carrinho">
+                        <div><span>Qtd: </span><span>-</span><span>1</span><span>+</span></div>
+                        <a>Remover</a>
+                    </div>
+                </div>
+            </div>
+            <div class="produto-n-carrinho">
+                <img class="imagem-produto-carrinho" src="https://avatars.mds.yandex.net/i?id=7e32cc9bc7526f752a9c0ef6cb0b89d7dc12b583-4599887-images-thumbs&n=13" alt="">
+                <div>
+                    <h3 class="nome-produto-carrinho">Nome do Produto</h3>
+                    <p class="acompanhamentos-carrinho">Acompanhamentos: Arroz, Feijão Tropeiro, Mandioca Cozida</p>
+                    <p class="obs-carrinho">Obs: <span>Pouco arroz</span></p>
+                    <div class="butoes-produto-carrinho">
+                        <div><span>Qtd: </span><span>-</span><span>1</span><span>+</span></div>
+                        <a>Remover</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="finalizar">
+            <label for="endereco">Endereço <input type="text" placeholder="Digite o endereço da entrega"></label>
+            <button class="btn-finalizar">Finalizar</button>
+        </section>
+    </main>
+    <footer>
+        <div class="sociais">
+            <h3>REDES SOCIAIS:</h3>
+            <a href="#">Instagram <img src="../static/imagens/instagram.png" alt="social"></a>
+            <a href="#">Facebook <img src="../static/imagens/instagram.png" alt="social"></a>
+            <a href="#">WhatsApp <img src="../static/imagens/instagram.png" alt="social"></a>
+        </div>
+        <div class="informacoes">
+            <div class="endereco">
+                <h3>VENHA NOS VISITAR</h3>
+                <p>Praça da QE 19 - guaará II</p>
+                <p>Brasília - DF</p>
+            </div>
+            <div class="funcionamento">
+                <h3>FUNCIONAMENTO</h3>
+                <p>Segunda-Feira Fechado</p>
+                <p>Terça-Feira 09h/16h</p>
+                <p>Quarta a Sábado 09h/23h</p>
+                <p>Domingos e Frriados 09h/22h</p>
+            </div>
+        </div>
+    </footer>
+    <p class="creditos">site criado por <a href="#">Rafael Brandão</a></p>
+</body>
+</html>

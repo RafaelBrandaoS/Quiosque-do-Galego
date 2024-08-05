@@ -1,0 +1,28 @@
+.carrinho-produtos {
+    min-height: calc(100vh - 75px);
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.produto-n-carrinho {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
+    align-items: center;
+    box-shadow: 0px 0px 5px #00000045;
+    border-radius: 8px;
+}
+
+.imagem-produto-carrinho {
+    width: 130px;
+    box-shadow: 2px 0px 3px #00000035;
+    border-radius: 8px 0px 0px 8px;
+}
+
+h3.nome-produto-carrinho {
+    color: black;
+    text-shadow: 1px 1px 2px #00000035;
+}

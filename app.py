@@ -11,6 +11,11 @@ def home():
     pSem = produtos.pratosSem()
     return render_template('index.html', sessoes=sess, pratosfds=pFds, pratossem=pSem)
 
+@app.route('/carrinho')
+def carrinho():
+    " carrinho "
+    return render_template('carrinho.html')
+
 @app.route('/pratosFds')
 def pratosFds():
     pFds = produtos.pratosFds()
