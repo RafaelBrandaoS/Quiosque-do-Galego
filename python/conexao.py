@@ -11,7 +11,7 @@ DB_BANCO = os.getenv('DB_BANCO')
 
 
 def criar_conexao():
-    return connect(host=DB_HOST, password='', user=DB_USUARIO, database=DB_BANCO, port=DB_PORTA)
+    return connect(host=DB_HOST, password=DB_SENHA, user=DB_USUARIO, database=DB_BANCO, port=DB_PORTA)
 
 
 def fexar_conexão(con):
