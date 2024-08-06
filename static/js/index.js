@@ -41,7 +41,7 @@ function mostrarDetalhes(event) {
             </div>
             <div class="dados-produto-detalhes">
                 <h2 class="nome-detalhes">${p_nome}</h2>
-                <p>R$ <samp>${p_preco}</samp></p>
+                <p>R$ <samp class="preco-produto" >${p_preco}</samp></p>
                 <h3>Escolha 4 acompanhamentos.</h3>
                 <p>extra será cobrado R$ 5.00 a mais</p>
             </div>
@@ -58,7 +58,7 @@ function mostrarDetalhes(event) {
             </div>
             <div class="butoes-detalhes">
                 <button class="add-carrinho cancelar">Cancelar</button>
-                <button class="add-carrinho">Adicionar ao Carrinho</button>
+                <button class="add-carrinho adicionar">Adicionar ao Carrinho</button>
             </div>
         </div>
         `
@@ -71,7 +71,7 @@ function mostrarDetalhes(event) {
             </div>
             <div class="dados-produto-detalhes">
                 <h2 class="nome-detalhes">${p_nome}</h2>
-                <p>R$ <samp>${p_preco}</samp></p>
+                <p>R$ <samp class="preco-produto" >${p_preco}</samp></p>
                 <h3>Escolha os acompanhamentos.</h3>
             </div>
             <div class="acompanhamentos">
@@ -83,7 +83,7 @@ function mostrarDetalhes(event) {
             </div>
             <div class="butoes-detalhes">
                 <button class="add-carrinho cancelar">Cancelar</button>
-                <button class="add-carrinho">Adicionar ao Carrinho</button>
+                <button class="add-carrinho adicionar">Adicionar ao Carrinho</button>
             </div>
         </div>
         `
@@ -96,14 +96,14 @@ function mostrarDetalhes(event) {
             </div>
             <div class="dados-produto-detalhes">
                 <h2 class="nome-detalhes">${p_nome}</h2>
-                <p>R$ <samp>${p_preco}</samp></p>
+                <p>R$ <samp class="preco-produto" >${p_preco}</samp></p>
             </div>
             <div class="acompanhamentos">
                 <label class="obs" for="obs">Observação: <input type="text" name="obs" id="obs"></label>
             </div>
             <div class="butoes-detalhes">
                 <button class="add-carrinho cancelar">Cancelar</button>
-                <button class="add-carrinho">Adicionar ao Carrinho</button>
+                <button class="add-carrinho adicionar">Adicionar ao Carrinho</button>
             </div>
         </div>
         `
@@ -125,17 +125,9 @@ function mostrarDetalhes(event) {
             }
         });
     }
-    // const opcoes = detalhes.querySelectorAll('.acc > input')
-    // for (var i = 0; i < opcoes.length; i++) {
-    //     opcoes[i].addEventListener("change", () => {
-    //         if (opcoes[i].checked) {
-    //             console.log('marcado')
-    //             label[i].classList.add('marcado')
-    //         }
-    //     })
-    // }
-
     container.append(detalhes)
+    const addCarrinhoBtn = detalhes.getElementsByClassName('adicionar')[0]
+    addCarrinhoBtn.addEventListener("click", obterDadosProduto)
 }
 
 function carregarSessao(sessao) {
@@ -153,4 +145,34 @@ function carregarSessao(sessao) {
             clickProduto()
         })
         .catch(error => console.error('Erro ao carregar a seção:', error));
+}
+
+function obterDadosProduto(event) {
+    const container = event.target.parentElement.parentElement
+    const img = container.querySelector('img').src
+    const nome = container.getElementsByClassName('nome-detalhes')[0].innerText
+    const preco = container.getElementsByClassName('preco-produto')[0].innerText
+    const acompanhamentos = container.querySelectorAll('.acc > input')
+    let selecionados = []
+    const obs = container.querySelector('#obs').value
+    for (var i = 0; i < acompanhamentos.length; i++) {
+        if (acompanhamentos[i].checked) {
+            selecionados.push(acompanhamentos[i].parentElement.innerText)
+        }
+    }
+    const dados = {'nome': nome, 'img': img, 'preco': preco, 'acompanhamentos': selecionados, 'obs': obs}
+    enviarDadosProduto(dados, container)
+}
+
+function enviarDadosProduto(dados, container) {
+    fetch('/adicionarCarrinho', {
+        method:'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(dados)
+    })
+    .then(response => response.text())
+    .catch(error => console.error('Error:', error))
+    container.parentElement.remove()
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,46 +23,25 @@
     <main>
         <h2 class="tt-carrinho">CARRINHO</h2>
         <section class="carrinho-produtos">
+            {% for item in itens %}
             <div class="produto-n-carrinho">
-                <img class="imagem-produto-carrinho" src="https://avatars.mds.yandex.net/i?id=7e32cc9bc7526f752a9c0ef6cb0b89d7dc12b583-4599887-images-thumbs&n=13" alt="">
+                <p class="dados-nome" style="display: none;">{{ item['nome'] }}</p>
+                <p class="dados-acom" style="display: none;">{{ item['acompanhamentos'] }}</p>
+                <p class="dados-obs" style="display: none;">{{ item['obs'] }}</p>
+                <img class="imagem-produto-carrinho" src="{{ item['img'] }}" alt="">
                 <div class="dados-produto-carrinho">
-                    <h3 class="nome-produto-carrinho">Nome do Produto</h3>
-                    <p class="acompanhamentos-carrinho">Acompanhamentos: Arroz, Feijão Tropeiro, Mandioca Cozida</p>
-                    <p class="obs-carrinho"><span></span></p>
+                    <p>{{ i }}</p>
+                    <h3 class="nome-produto-carrinho">{{ item['nome'] }}</h3>
+                    <p class="acompanhamentos-carrinho">{% if item['acompanhamentos'] != [] %}Com: {% for ac in item['acompanhamentos'] %} {{ ac }}, {% endfor %}{% endif %}</p>
+                    <p class="obs-carrinho">{% if item['obs'] != '' %}Obs: {{ item['obs'] }}{% endif %}</p>
                     <div class="butoes-produto-carrinho">
-                        <p class="p-preco">R$ 22.22</p>
-                        <div class="quantidade"><span>Qtd: </span><span class="menos">-</span><span class="qtd">5</span><span class="mais">+</span></div>
-                        <a class="remover" href="#">Remover</a>
+                        <p class="p-preco">R$ <span>{{ item['preco'] }}</span></p>
+                        <div class="quantidade"><span>Qtd: </span><span class="menos">-</span><span class="qtd">1</span><span class="mais">+</span></div>
+                        <button class="remover">Remover</button>
                     </div>
                 </div>
             </div>
-            <div class="produto-n-carrinho">
-                <img class="imagem-produto-carrinho" src="https://avatars.mds.yandex.net/i?id=7e32cc9bc7526f752a9c0ef6cb0b89d7dc12b583-4599887-images-thumbs&n=13" alt="">
-                <div class="dados-produto-carrinho">
-                    <h3 class="nome-produto-carrinho">Nome do Produto</h3>
-                    <p class="acompanhamentos-carrinho"></p>
-                    <p class="obs-carrinho"><span></span></p>
-                    <div class="butoes-produto-carrinho">
-                        <p class="p-preco">R$ 22.22</p>
-                        <div class="quantidade"><span>Qtd: </span><span class="menos">-</span><span class="qtd">5</span><span class="mais">+</span></div>
-                        <a class="remover"  href="#">Remover</a>
-                    </div>
-                </div>
-            </div>
-            <div class="produto-n-carrinho">
-                <img class="imagem-produto-carrinho" src="https://avatars.mds.yandex.net/i?id=7e32cc9bc7526f752a9c0ef6cb0b89d7dc12b583-4599887-images-thumbs&n=13" alt="">
-                <div class="dados-produto-carrinho">
-                    <h3 class="nome-produto-carrinho">Nome do Produto</h3>
-                    <p class="acompanhamentos-carrinho">Acompanhamentos: Arroz, Feijão Tropeiro, Mandioca Cozida</p>
-                    <p class="obs-carrinho">Obs: <span>Pouco arroz</span></p>
-                    <div class="butoes-produto-carrinho">
-                        <p class="p-preco">R$ 22.22</p>
-                        <div class="quantidade"><span>Qtd: </span><span class="menos">-</span><span class="qtd">5</span><span class="mais">+</span></div>
-                        <a class="remover"  href="#">Remover</a>
-                    </div>
-                </div>
-            </div>
-            
+            {% endfor %}
         </section>
         <section class="finalizar">
             <label class="endereco-entrega" for="endereco">Endereço: <input type="text" placeholder="Digite o endereço da entrega"></label>
@@ -92,5 +71,6 @@
         </div>
     </footer>
     <p class="creditos">site criado por <a href="#">Rafael Brandão</a></p>
+    <script src="{{ url_for('static', filename='js/carrinho.js') }}"></script>
 </body>
 </html>

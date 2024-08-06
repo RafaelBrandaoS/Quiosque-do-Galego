@@ -1,7 +1,9 @@
-from flask import Flask, render_template, redirect, url_for
+from flask import Flask, render_template, url_for, request, session, jsonify
 from python import produtos
+import os
 
 app = Flask(__name__)
+app.secret_key = os.urandom(24) 
 
 @app.route('/')
 def home():
@@ -14,7 +16,30 @@ def home():
 @app.route('/carrinho')
 def carrinho():
     " carrinho "
-    return render_template('carrinho.html')
+    itens = session.get('carrinho', [])
+    return render_template('carrinho.html', itens=itens)
+
+@app.route('/adicionarCarrinho', methods=['POST'])
+def adicionarCarrinho():
+    dados = request.get_json()
+    carrinho = session.get('carrinho', [])
+    if dados not in carrinho:
+        carrinho.append(dados)
+    session['carrinho'] = carrinho
+    return jsonify({'status': 'ok', 'dados': dados}), 200
+
+@app.route('/removerProdutoCarrinho', methods=['POST'])
+def removerProdutoCarrinho():
+    dados = request.get_json()
+    carrinho = session.get('carrinho', [])
+    atual = []
+    print(carrinho)
+    for item in carrinho:
+        if item['nome'] != dados['nome']:
+            print(item['nome'], dados['nome'])
+            atual.append(item)
+    session['carrinho'] = atual
+    return jsonify({'status': 'ok', 'dados': dados}), 200
 
 @app.route('/pratosFds')
 def pratosFds():
