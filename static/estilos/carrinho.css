@@ -1,3 +1,10 @@
+h2.tt-carrinho {
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0px 0px 8px rgba(132, 165, 50, 0.367);
+}
+
 .carrinho-produtos {
     min-height: calc(100vh - 75px);
     padding: 15px;
@@ -12,7 +19,7 @@
     justify-content: space-around;
     gap: 10px;
     align-items: center;
-    box-shadow: 0px 0px 5px #00000045;
+    box-shadow: 0px 0px 8px rgba(132, 165, 50, 0.367);
     border-radius: 8px;
 }
 

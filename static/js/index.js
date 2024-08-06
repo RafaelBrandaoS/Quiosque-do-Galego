@@ -34,66 +34,34 @@ function mostrarDetalhes(event) {
     const container = document.querySelector('body')
     let detalhes = document.createElement('div')
     if (produto.classList.contains('pratos')) {
-        if (p_nome == 'Feijoada do Galego') {
-            detalhes.innerHTML = `
-            <div class="dados-detalhes">
-                <div>
-                    <img src="${p_imagem}" alt="${p_nome}">
-                </div>
-                <div class="dados-produto-detalhes">
-                    <h2 class="nome-detalhes">${p_nome}</h2>
-                    <p>R$ <samp>${p_preco}</samp></p>
-                    <h3>Escolha 4 acompanhamentos.</h3>
-                    <p>extra será cobrado R$ 5.00 a mais</p>
-                    <p>A feijoada acompanha também couve refogada, farofa da casa e torresmo</p>
-                </div>
-                <div class="acompanhamentos">
-                    <label class="acc" for="arroz"><input type="checkbox" name="arroz" id="arroz"> Arroz</label>
-                    <label class="acc" for="batata"><input type="checkbox" name="batata" id="batata"> Batata Frita</label>
-                    <label class="acc" for="farofa"><input type="checkbox" name="farofa" id="farofa"> Farofa da Casa</label>
-                    <label class="acc" for="caldo"><input type="checkbox" name="caldo" id="caldo"> Feijão de Caldo</label>
-                    <label class="acc" for="tropeiro"><input type="checkbox" name="tropeiro" id="tropeiro"> Feijão Tropeiro</label>
-                    <label class="acc" for="mandioca"><input type="checkbox" name="mandioca" id="mandioca"> Mandioca Cozida</label>
-                    <label class="acc" for="ovo"><input type="checkbox" name="ovo" id="ovo"> Ovo Frito</label>
-                    <label class="acc" for="salada"><input type="checkbox" name="salada" id="salada"> Salada Alface e Tomate</label>
-                    <label class="obs" for="obs">Observação: <input type="text" name="obs" id="obs"></label>
-                </div>
-                <div class="butoes-detalhes">
-                    <button class="add-carrinho cancelar">Cancelar</button>
-                    <button class="add-carrinho">Adicionar ao Carrinho</button>
-                </div>
+        detalhes.innerHTML = `
+        <div class="dados-detalhes">
+            <div>
+                <img src="${p_imagem}" alt="${p_nome}">
             </div>
-            `
-        } else {
-            detalhes.innerHTML = `
-            <div class="dados-detalhes">
-                <div>
-                    <img src="${p_imagem}" alt="${p_nome}">
-                </div>
-                <div class="dados-produto-detalhes">
-                    <h2 class="nome-detalhes">${p_nome}</h2>
-                    <p>R$ <samp>${p_preco}</samp></p>
-                    <h3>Escolha 4 acompanhamentos.</h3>
-                    <p>extra será cobrado R$ 5.00 a mais</p>
-                </div>
-                <div class="acompanhamentos">
-                    <label class="acc" for="arroz"><input type="checkbox" name="arroz" id="arroz"> Arroz</label>
-                    <label class="acc" for="batata"><input type="checkbox" name="batata" id="batata"> Batata Frita</label>
-                    <label class="acc" for="farofa"><input type="checkbox" name="farofa" id="farofa"> Farofa da Casa</label>
-                    <label class="acc" for="caldo"><input type="checkbox" name="caldo" id="caldo"> Feijão de Caldo</label>
-                    <label class="acc" for="tropeiro"><input type="checkbox" name="tropeiro" id="tropeiro"> Feijão Tropeiro</label>
-                    <label class="acc" for="mandioca"><input type="checkbox" name="mandioca" id="mandioca"> Mandioca Cozida</label>
-                    <label class="acc" for="ovo"><input type="checkbox" name="ovo" id="ovo"> Ovo Frito</label>
-                    <label class="acc" for="salada"><input type="checkbox" name="salada" id="salada"> Salada Alface e Tomate</label>
-                    <label class="obs" for="obs">Observação: <input type="text" name="obs" id="obs"></label>
-                </div>
-                <div class="butoes-detalhes">
-                    <button class="add-carrinho cancelar">Cancelar</button>
-                    <button class="add-carrinho">Adicionar ao Carrinho</button>
-                </div>
+            <div class="dados-produto-detalhes">
+                <h2 class="nome-detalhes">${p_nome}</h2>
+                <p>R$ <samp>${p_preco}</samp></p>
+                <h3>Escolha 4 acompanhamentos.</h3>
+                <p>extra será cobrado R$ 5.00 a mais</p>
             </div>
-            `
-        }
+            <div class="acompanhamentos">
+                <label class="acc" for="arroz"><input type="checkbox" name="arroz" id="arroz"> Arroz</label>
+                <label class="acc" for="batata"><input type="checkbox" name="batata" id="batata"> Batata Frita</label>
+                <label class="acc" for="farofa"><input type="checkbox" name="farofa" id="farofa"> Farofa da Casa</label>
+                <label class="acc" for="caldo"><input type="checkbox" name="caldo" id="caldo"> Feijão de Caldo</label>
+                <label class="acc" for="tropeiro"><input type="checkbox" name="tropeiro" id="tropeiro"> Feijão Tropeiro</label>
+                <label class="acc" for="mandioca"><input type="checkbox" name="mandioca" id="mandioca"> Mandioca Cozida</label>
+                <label class="acc" for="ovo"><input type="checkbox" name="ovo" id="ovo"> Ovo Frito</label>
+                <label class="acc" for="salada"><input type="checkbox" name="salada" id="salada"> Salada Alface e Tomate</label>
+                <label class="obs" for="obs">Observação: <input type="text" name="obs" id="obs"></label>
+            </div>
+            <div class="butoes-detalhes">
+                <button class="add-carrinho cancelar">Cancelar</button>
+                <button class="add-carrinho">Adicionar ao Carrinho</button>
+            </div>
+        </div>
+        `
     } 
     else if (produto.classList.contains('jantinha')) {
         detalhes.innerHTML = `

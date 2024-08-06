@@ -33,6 +33,7 @@
         </nav>
         <section class="produtos">
             <div class="conteiner-produtos">
+                <h2>Pratos do Dia</h2>
                 {% if sessoes[0][3] == 'disponivel' %}
                     {% for prato in pratosfds %}
                     <div class="produto pratos">
@@ -44,6 +45,7 @@
                     </div>
                     {% endfor %}
                 {% else %}
+                <h2>Pratos do Dia</h2>
                     {% for prato in pratossem %}
                     <div class="produto pratos">
                         <img class="produto-img" src="{{ prato[3] }}" alt="produto img">
