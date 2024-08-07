@@ -19,6 +19,10 @@ def carrinho():
     itens = session.get('carrinho', [])
     return render_template('carrinho.html', itens=itens)
 
+@app.route('/finalizar')
+def finalizar():
+    return render_template('finalizar.html')
+
 @app.route('/adicionarCarrinho', methods=['POST'])
 def adicionarCarrinho():
     dados = request.get_json()
