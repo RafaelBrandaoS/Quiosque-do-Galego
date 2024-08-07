@@ -41,7 +41,7 @@ function mostrarDetalhes(event) {
             </div>
             <div class="dados-produto-detalhes">
                 <h2 class="nome-detalhes">${p_nome}</h2>
-                <p>R$ <samp class="preco-produto" >${p_preco}</samp></p>
+                <p class="p-preco">R$ <samp class="preco-produto" >${p_preco}</samp></p>
                 <h3>Escolha 4 acompanhamentos.</h3>
                 <p>extra será cobrado R$ 5.00 a mais</p>
             </div>
@@ -54,7 +54,7 @@ function mostrarDetalhes(event) {
                 <label class="acc" for="mandioca"><input type="checkbox" name="mandioca" id="mandioca"> Mandioca Cozida</label>
                 <label class="acc" for="ovo"><input type="checkbox" name="ovo" id="ovo"> Ovo Frito</label>
                 <label class="acc" for="salada"><input type="checkbox" name="salada" id="salada"> Salada Alface e Tomate</label>
-                <label class="obs" for="obs">Observação: <input type="text" name="obs" id="obs"></label>
+                <label class="obs" for="obs">Observação: <input  type="text" name="obs" id="obs" autocomplete="off"></label>
             </div>
             <div class="butoes-detalhes">
                 <button class="add-carrinho cancelar">Cancelar</button>
@@ -71,7 +71,7 @@ function mostrarDetalhes(event) {
             </div>
             <div class="dados-produto-detalhes">
                 <h2 class="nome-detalhes">${p_nome}</h2>
-                <p>R$ <samp class="preco-produto" >${p_preco}</samp></p>
+                <p class="p-preco">R$ <samp class="preco-produto" >${p_preco}</samp></p>
                 <h3>Escolha os acompanhamentos.</h3>
             </div>
             <div class="acompanhamentos">
@@ -79,7 +79,7 @@ function mostrarDetalhes(event) {
                 <label class="acc" for="tropeiro"><input type="checkbox" name="tropeiro" id="tropeiro"> Feijão Tropeiro</label>
                 <label class="acc" for="mandioca"><input type="checkbox" name="mandioca" id="mandioca"> Mandioca Cozida</label>
                 <label class="acc" for="vinagrete"><input type="checkbox" name="vinagrete" id="vinagrete"> Vinagrete</label>
-                <label class="obs" for="obs">Observação: <input type="text" name="obs" id="obs"></label>
+                <label class="obs" for="obs">Observação: <input  type="text" name="obs" id="obs" autocomplete="off"></label>
             </div>
             <div class="butoes-detalhes">
                 <button class="add-carrinho cancelar">Cancelar</button>
@@ -96,10 +96,10 @@ function mostrarDetalhes(event) {
             </div>
             <div class="dados-produto-detalhes">
                 <h2 class="nome-detalhes">${p_nome}</h2>
-                <p>R$ <samp class="preco-produto" >${p_preco}</samp></p>
+                <p class="p-preco">R$ <samp class="preco-produto" >${p_preco}</samp></p>
             </div>
             <div class="acompanhamentos">
-                <label class="obs" for="obs">Observação: <input type="text" name="obs" id="obs"></label>
+                <label class="obs" for="obs">Observação: <input  type="text" name="obs" id="obs" autocomplete="off"></label>
             </div>
             <div class="butoes-detalhes">
                 <button class="add-carrinho cancelar">Cancelar</button>
@@ -116,12 +116,22 @@ function mostrarDetalhes(event) {
     })
 
     const opcoes = detalhes.querySelectorAll('.acc > input')
+    let quant = 0
     for (var i = 0; i < opcoes.length; i++) {
         opcoes[i].addEventListener('change', function () {
             if (this.checked) {
+                quant += 1
                 this.parentElement.classList.add('marcado')
             } else {
+                quant -= 1
                 this.parentElement.classList.remove('marcado')
+            }
+            if (quant > 4) {
+                let valor = +p_preco + ((quant - 4) * 5)
+                valor = valor.toFixed(2)
+                document.getElementsByClassName('preco-produto')[0].innerText = valor
+            } else {
+                document.getElementsByClassName('preco-produto')[0].innerText = p_preco
             }
         });
     }

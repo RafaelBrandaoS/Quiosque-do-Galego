@@ -36,7 +36,6 @@ def removerProdutoCarrinho():
     print(carrinho)
     for item in carrinho:
         if item['nome'] != dados['nome']:
-            print(item['nome'], dados['nome'])
             atual.append(item)
     session['carrinho'] = atual
     return jsonify({'status': 'ok', 'dados': dados}), 200

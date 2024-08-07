@@ -16,8 +16,9 @@ h2.tt-carrinho {
 .produto-n-carrinho {
     width: 100%;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-around;
     align-items: flex-start;
+    flex-direction: column;
     box-shadow: 0px 0px 8px #84a5325e;
     border-radius: 8px;
 }
