@@ -39,15 +39,23 @@ h3.nome-produto-carrinho {
     height: 150px;
     width: 100%;
     padding: 5px 8px;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+.mais-dados {
+    display: flex;
     flex-direction: column;
     justify-content: space-around;
 }
 
 .butoes-produto-carrinho {
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+    padding: 5px 8px;
 }
 
 .quantidade {

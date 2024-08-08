@@ -30,16 +30,18 @@
             <div class="produto-n-carrinho">
                 <p class="dados-acom" style="display: none;">{{ item['acompanhamentos'] }}</p>
                 <p class="dados-obs" style="display: none;">{{ item['obs'] }}</p>
-                <img class="imagem-produto-carrinho" src="{{ item['img'] }}" alt="">
                 <div class="dados-produto-carrinho">
-                    <h3 class="nome-produto-carrinho">{{ item['nome'] }}</h3>
-                    <p class="acompanhamentos-carrinho">{% if item['acompanhamentos'] != [] %}Com: {% for ac in item['acompanhamentos'] %} {{ ac }}, {% endfor %}{% endif %}</p>
-                    <p class="obs-carrinho">{% if item['obs'] != '' %}Obs: {{ item['obs'] }}{% endif %}</p>
-                    <div class="butoes-produto-carrinho">
-                        <p class="p-preco">R$ <span>{{ item['preco'] }}</span></p>
-                        <div class="quantidade"><span>Qtd: </span><span class="menos">-</span><span class="qtd">1</span><span class="mais">+</span></div>
-                        <button class="remover">Remover</button>
+                    <img class="imagem-produto-carrinho" src="{{ item['img'] }}" alt="">
+                    <div class="mais-dados">
+                        <h3 class="nome-produto-carrinho">{{ item['nome'] }}</h3>
+                        <p class="acompanhamentos-carrinho">{% if item['acompanhamentos'] != [] %}<span style="font-weight: bolder;">com: </span>{% for ac in item['acompanhamentos'] %} {{ ac }}, {% endfor %}{% endif %}</p>
+                        <p class="obs-carrinho">{% if item['obs'] != '' %}<span style="font-weight: bolder;">obs: </span>{{ item['obs'] }}{% endif %}</p>
                     </div>
+                </div>
+                <div class="butoes-produto-carrinho">
+                    <p class="p-preco">R$ <span>{{ item['preco'] }}</span></p>
+                    <div class="quantidade"><span>Qtd: </span><span class="menos">-</span><span class="qtd">1</span><span class="mais">+</span></div>
+                    <button class="remover">Remover</button>
                 </div>
             </div>
             {% endfor %}

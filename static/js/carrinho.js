@@ -29,6 +29,14 @@ function eventos() {
     }
 
     atualizaTotal()
+
+    const btn_finalizar = document.getElementsByClassName('btn-finalizar')[0]
+    btn_finalizar.addEventListener("click", finalizarPedido)
+}
+
+function finalizarPedido(event) {
+    const container = event.target.parentElement.parentElement.getElementsByClassName('carrinho-produtos')[0]
+    console.log(container)
 }
 
 function atualizaTotal() {
@@ -47,7 +55,7 @@ function atualizaTotal() {
 }
 
 function obterDadosRemove(event) {
-    const container = event.target.parentElement.parentElement.parentElement
+    const container = event.target.parentElement.parentElement
     const nome = container.getElementsByClassName('nome-produto-carrinho')[0].innerText
     const acom = container.getElementsByClassName('dados-acom')[0].innerText
     const obs = container.getElementsByClassName('dados-obs')[0].innerText
