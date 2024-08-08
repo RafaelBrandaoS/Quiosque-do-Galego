@@ -34,9 +34,54 @@ function eventos() {
     btn_finalizar.addEventListener("click", finalizarPedido)
 }
 
-function finalizarPedido(event) {
-    const container = event.target.parentElement.parentElement.getElementsByClassName('carrinho-produtos')[0]
-    console.log(container)
+function finalizarPedido() {
+    const container = document.getElementsByClassName('carrinho-produtos')[0]
+    let confirmar = document.createElement('div')
+    confirmar.innerHTML = `
+    <h3>Quer finalizar o pedido?</h3>
+    <div>
+        <button class="nao">Não</button>
+        <button class="sim">Sim</button>
+    </div>
+    `
+    confirmar.classList.add('confirmar-finalizar')
+    container.append(confirmar)
+    const nao = document.getElementsByClassName('nao')[0]
+    nao.addEventListener("click", () => {
+        confirmar.remove()
+    })
+    const sim = document.getElementsByClassName('sim')[0]
+    sim.addEventListener("click", obterDadosProdutoPedido)
+}
+
+function obterDadosProdutoPedido() {
+    const container = document.getElementsByClassName('carrinho-produtos')[0]
+    const total = document.getElementsByClassName('total')[0].innerText
+    let pedido = []
+    const produtos = container.getElementsByClassName('produto-n-carrinho')
+    for (var i = 0; i < produtos.length; i++) {
+        const nome = produtos[i].getElementsByClassName('nome-produto-carrinho')[0].innerText
+        const preco = produtos[i].getElementsByClassName('dados-preco')[0].innerText
+        const qtd = produtos[i].getElementsByClassName('qtd')[0].innerText
+        const acom = produtos[i].getElementsByClassName('dados-acom')[0].innerText
+        const obs = produtos[i].getElementsByClassName('dados-obs')[0].innerText
+        let produto = {'nome': nome, 'prco': preco, 'qtd': qtd, 'acom': acom, 'obs': obs}
+        pedido.push(produto)
+    }
+    pedido.push({'total': total})
+    enviarDadosPedido(pedido)
+}
+
+function enviarDadosPedido(pedido) {
+    fetch("/obterPedido", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(pedido)
+    })
+    .catch(error => console.error('Error:', error))
+    window.location.href = "/finalizar";
 }
 
 function atualizaTotal() {

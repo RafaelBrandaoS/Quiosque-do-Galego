@@ -26,43 +26,43 @@
             <div class="dados-pessoais-dados">
                 <label class="label" for="nome"><input type="text" name="nome" id="nome" autocomplete="off" placeholder="nome"></label>
                 <label class="label" for="telefone"><input type="tel" name="telefone" id="telefone" placeholder="telefone ex: (61)91234-5678"></label>
-                <p class="aviso">preencha esse campo corretamente pois se ouver algum problema com seu pedido entraremos em contato</p>
+                <p class="erro aviso" style="display: none; color: red;">Preencha todos os campos</p>
+                <p class="aviso">preencha esses campos corretamente pois se ouver algum problema com seu pedido entraremos em contato</p>
             </div>
-            <button>Continuar</button>
+            <button id="btn-dados-pessoais">Continuar</button>
         </section>
-        <section class="endereco">
+        <section class="endereco" id="endereco" style="display: none;">
             <h3>Endereço da Entrega</h3>
-            <label class="label" for="cep"><input type="number" name="cep" id="cep" placeholder="digite seu CEP"></label>
+            <label class="label" for="cep"><input type="number" name="cep" id="cep" maxlength="9" oninput="validarCEP(this)" placeholder="digite seu CEP"></label>
+            <p class="erro1 aviso" style="display: none; color: red;">digite o cep corretamente</p>
             <div>
                 <a href="#">não sei meu CEP</a>
                 <button class="verificar-cep">Verificar CEP</button>
             </div>
+            <p class="erro2 aviso" style="display: none; color: red;">ERRO, CEP não encontrado</p>
+            <p class="erro3 aviso" style="display: none; color: red;">infelizmente nosso sistema de entregas não cobre a sua região</p>
+
             <div class="endereco-dados">
-                <div>
-                    <p>valor da entrega R$<span>00.00</span></p>
-                    <p class="ende-dados">QE 44 Conjunto P</p>
-                    <p>CEP <span class="cep-dados">71070167</span> <span class="bairro">Guará II</span></p>
-                    <p><span class="cidade">Brasilia</span> - <span class="estado">Distrito Federal</span></p>
-                </div>
-                <label class="label" for="numero"><input type="number" name="numero" id="numero" placeholder="número"></label>
-                <p class="aviso">deixe vazio se não ouver número</p>
-                <button>Continuar</button>
+
             </div>
         </section>
-        <section class="pagamento">
+        <section class="pagamento" id="pagamento" style="display: none;">
             <h3>Forma de pagamento</h3>
             <div class="pagamento-opcoes">
-                <label for="pix">Pix: <input type="checkbox" name="pix" id="pix"></label>
-                <label for="cartão">Cartão: <input type="checkbox" name="cartão" id="cartão"></label>
-                <label for="dinheiro">Dinheiro: <input type="checkbox" name="dinheiro" id="dinheiro"></label>
+                <label for="pix">Pix: <input type="checkbox" class="m-pagamento" name="pix" id="pix"></label>
+                <label for="cartão">Cartão: <input type="checkbox" class="m-pagamento" name="cartão" id="cartão"></label>
+                <label for="dinheiro">Dinheiro: <input type="checkbox" class="m-pagamento" name="dinheiro" id="dinheiro"></label>
             </div>
             <div class="troco" style="display: none;">
                 <p class="aviso">digite o valor que vai pagar em dinheiro, para que a pessoa que for entregar seu pedido leve o troco para você.</p>
-                <label class="label" for="troco"><input type="number" name="nome" id="nome" autocomplete="off" placeholder="valor"></label>
+                <p class="aviso">deixe vazio se não precisar de troco.</p>
+                <label class="label" for="troco"><input type="number" name="troco" id="troco" autocomplete="off" placeholder="valor"></label>
             </div>
-            <button>Continuar</button>
+            <button class="btn-pagamento">Continuar</button>
+            <p class="erro4 aviso" style="display: none; color: red;">escolha a forma de pagamento</p>
         </section>
-        <section class="finalizar">
+        <section class="finalizar" id="finalizar" style="display: none;">
+            <p class="aviso">confira se todos os dados estão corretos</p>
             <button class="pedir">Enviar Pedido</button>
         </section>
     </main>

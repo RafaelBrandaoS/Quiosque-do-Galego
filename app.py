@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, request, session, jsonify
+from flask import Flask, render_template, url_for, request, session, jsonify, redirect
 from python import produtos
 import os
 
@@ -19,9 +19,28 @@ def carrinho():
     itens = session.get('carrinho', [])
     return render_template('carrinho.html', itens=itens)
 
+@app.route('/obterPedido', methods=['POST'])
+def obterPedido():
+    session['pedido'] = ''
+    pedido = request.get_json()
+    session['pedido'] = pedido
+    return jsonify({'status': 'ok', 'dados': pedido}), 200
+
 @app.route('/finalizar')
 def finalizar():
+    # aqui vou pegar os dados dos clientes e armazenar
     return render_template('finalizar.html')
+
+@app.route('/obterCliente', methods=['POST'])
+def obterCliente():
+    cliente = request.get_json()
+    session['cliente'] = cliente
+    return jsonify({'status': 'ok', 'dados': cliente}), 200
+
+@app.route('/infosPedido')
+def infosPedido():
+    
+    return ''
 
 @app.route('/adicionarCarrinho', methods=['POST'])
 def adicionarCarrinho():

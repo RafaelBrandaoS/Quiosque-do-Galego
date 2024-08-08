@@ -118,3 +118,46 @@ div.dados {
     width: 20%;
     cursor: pointer;
 }
+
+.confirmar-finalizar {
+    position: fixed;
+    background-color: #fff;
+    border: 1px solid black;
+    width: 75%;
+    max-width: 400px;
+    top: 50vh;
+    left: 50vw;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.confirmar-finalizar > h3 {
+    color: black;
+    text-shadow: none;
+}
+
+.confirmar-finalizar > div {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+.nao, .sim {
+    padding: 8px;
+    min-width: 80px;
+    border: none;
+    border-radius: 5px;
+    color: #fdfcf9;
+    cursor: pointer;
+}
+
+.nao {
+    background-color: #c73030;
+    box-shadow: 0px 0px 10px #c7303075;
+}
+
+.sim {
+    background-color: #30c730;
+    box-shadow: 0px 0px 10px #30c73075;
+}
