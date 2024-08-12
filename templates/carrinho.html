@@ -48,7 +48,14 @@
             {% endfor %}
         </section>
         <section class="finalizar">
-            <p>Total: <span class="p-preco">R$<span class="total">00.00</span></span></p>
+            <div>
+                {% if itens == [] %}
+                <p>Total: <span class="p-preco">R$<span class="tot">00.00</span></span></p>
+                {% else %}
+                <p>Entrega: <span class="p-preco">R$ <span class="entrega">7.00</span></span></p>
+                <p>Total: <span class="p-preco">R$<span class="total">00.00</span></span></p>
+                {% endif %}
+            </div>
             <button class="btn-finalizar">Finalizar</button>
         </section>
     </main>

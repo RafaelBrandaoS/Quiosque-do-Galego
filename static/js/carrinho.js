@@ -65,14 +65,18 @@ function obterDadosProdutoPedido() {
         const qtd = produtos[i].getElementsByClassName('qtd')[0].innerText
         const acom = produtos[i].getElementsByClassName('dados-acom')[0].innerText
         const obs = produtos[i].getElementsByClassName('dados-obs')[0].innerText
-        let produto = {'nome': nome, 'prco': preco, 'qtd': qtd, 'acom': acom, 'obs': obs}
+        console.log(acom)
+        let produto = {'nome': nome, 'preco': preco, 'qtd': qtd, 'acom': acom, 'obs': obs}
         pedido.push(produto)
     }
-    pedido.push({'total': total})
-    enviarDadosPedido(pedido)
+    let totalPedido = {'total': total}
+    console.log(totalPedido)
+    console.log(pedido)
+
+    enviarDadosPedido(pedido, totalPedido)
 }
 
-function enviarDadosPedido(pedido) {
+async function enviarDadosPedido(pedido, total) {
     fetch("/obterPedido", {
         method: 'POST',
         headers: {
@@ -80,12 +84,30 @@ function enviarDadosPedido(pedido) {
         },
         body: JSON.stringify(pedido)
     })
+    .then(result => {
+        console.log('Sucesso:', result);
+        enviarTotal(total)
+    })
     .catch(error => console.error('Error:', error))
-    window.location.href = "/finalizar";
+}
+
+async function enviarTotal(total) {
+    fetch("/obterTotal", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(total)
+    })
+    .then(result => {
+        console.log('Sucesso:', result);
+        window.location.href = '/finalizar';
+    })
+    .catch(error => console.error('Error:', error))
 }
 
 function atualizaTotal() {
-    let total = 0
+    let total = 7
     const produtos = document.getElementsByClassName('produto-n-carrinho')
     for (var i = 0; i < produtos.length; i++) {
         const preco = produtos[i].querySelector('.p-preco > span').innerText

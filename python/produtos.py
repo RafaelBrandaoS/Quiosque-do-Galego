@@ -4,11 +4,11 @@ from python.conexao import criar_conexao, fexar_conexão
 def sessoes():
     con = criar_conexao()
     cursor = con.cursor()
-    sql = "select * from sessoes"
+    sql = "select * from sessoes order by s_nome"
     cursor.execute(sql)
     sessoes = cursor.fetchall()
     cursor.close()
-    fexar_conexão(cursor)
+    fexar_conexão(con)
     return sessoes
 
 

@@ -1,0 +1,83 @@
+nav {
+    width: 100%;
+    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.363);
+    display: flex;
+    justify-content: space-around;
+    padding: 5px;
+}
+
+nav > a {
+    padding: 10px;
+    width: 40%;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.368);
+    text-align: center;
+    border-radius: 10px;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+}
+
+.pedido-admin {
+    width: 100%;
+    padding: 10px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.368);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.dados-cliente {
+    display: flex;
+    justify-content: space-around;
+}
+
+.dados-cliente > h3 {
+    color: black;
+    text-shadow: none;
+}
+
+.pedido-cliente {
+    width: 100%;
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.368);
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.produto-pedido {
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.368);
+    padding: 5px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+.preco-qtd {
+    display: flex;
+    justify-content: flex-start;
+    padding: 5px 0px;
+    gap: 10px;
+}
+
+.dados-entrega {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.btn-admin {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-admin > button {
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+

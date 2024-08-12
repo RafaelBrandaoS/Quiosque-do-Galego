@@ -40,6 +40,7 @@ function mostrarDetalhes(event) {
                 <img src="${p_imagem}" alt="${p_nome}">
             </div>
             <div class="dados-produto-detalhes">
+                <p>Marmitex</p>
                 <h2 class="nome-detalhes">${p_nome}</h2>
                 <p class="p-preco">R$ <samp class="preco-produto" >${p_preco}</samp></p>
                 <h3>Escolha 4 acompanhamentos.</h3>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta http-equiv="refresh" content="10"> -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='estilos/home.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='estilos/admin.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='imagens/favicon.ico') }}" type="image/x-icon">
+    <title>Admin - Quiosque do Galego</title>
+</head>
+<body>
+    <header>
+        <a href="#"><img src="{{ url_for('static', filename='imagens/logo.png') }}" alt="Logo"></a>
+        <div>
+            <a href="{{ url_for('home') }}"><span class="material-symbols-outlined carrinho">undo</span></a>
+        </div>
+    </header>
+    <nav>
+        <a href="#">gerenciar catalogo</a>
+        <a href="#">pedidos</a>
+    </nav>
+    <main>
+        <section>
+            {% for cliente in lst_clientes %}
+            <div class="pedido-admin">
+                <div class="dados-cliente">
+                    <h3 class="nome-cliente">{{ cliente[1] }}</h3>
+                    <p class="tel-cliente">telefone: {{cliente[2]}}</p>
+                    <p class="id-cliente">N° Pedido: {{cliente[0]}}</p>
+                </div>
+                <div class="pedido-cliente">
+                    {% for pedido in lst_prdidos %}
+                    {% if pedido[1] == cliente[0] %}
+                    <div class="produto-pedido">
+                        <h4 class="nome-produto-admin">{{pedido[2]}}</h4>
+                        {% if pedido[3] != '' %}
+                        <p class="acompanhamentos-admin">com: {{pedido[3]}}</p>
+                        {% endif %}
+                        {% if pedido[4] != '' %}
+                        <p class="obs-carrinho-admin">Obs: {{pedido[4]}}</p>
+                        {% endif %}
+                        <div class="preco-qtd">
+                            <p class="preco">R${{pedido[5]}}</p>
+                            <p class="qtd">Quantidade: {{pedido[6]}}</p>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="dados-entrega">
+                    <p class="endereco-cliente">Endereço: {{cliente[3]}}</p>
+                    <p class="casa">Casa: {{cliente[4]}}</p>
+                    <p class="pagamento">pagamento: {{cliente[5]}}</p>
+                    {% if cliente[5] == 'dinheiro' %}
+                    <p class="troco">Troco para: R${{cliente[6]}}</p>
+                    {% endif %}
+                    <p class="total-pedido">Total: {{cliente[7]}}</p>
+                </div>
+                <div class="btn-admin">
+                    <button class="aceitar">aceitar</button>
+                    <button class="recusar">recusar</button>
+                    <button class="finalizar">finalizar</button>
+                </div>
+            </div>
+            {% endfor %}
+        </section>
+    </main>
+    <script src="{{ url_for('static', filename='js/admin.js') }}"></script>
+</body>
+</html>

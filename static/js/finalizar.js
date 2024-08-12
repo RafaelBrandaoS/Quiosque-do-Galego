@@ -63,7 +63,6 @@ function mostrarDadosEntega(dados) {
     let dadosEntrega = document.getElementsByClassName('endereco-dados')[0]
     dadosEntrega.innerHTML = `
     <div>
-        <p>valor da entrega R$<span>00.00</span></p>
         <p>ENDEREÇO:  <span class="ende-dados">${dados.logradouro}</span></p>
         <p>CEP: <span class="cep-dados">${dados.cep}</span></p>
         <p>BAIRRO: <span class="bairro">${dados.bairro}</span></p>
@@ -156,6 +155,9 @@ function enviarCliente(cliente) {
         },
         body: JSON.stringify(cliente)
     })
+    .then(result => {
+        console.log('Sucesso:', result);
+        window.location.href = "/";
+    })
     .catch(error => console.error('Error:', error))
-    window.location.href = "/";
 }

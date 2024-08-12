@@ -1,6 +1,7 @@
 from flask import Flask, render_template, url_for, request, session, jsonify, redirect
-from python import produtos
+from python import produtos, pedidos
 import os
+import pprint
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24) 
@@ -13,34 +14,17 @@ def home():
     pSem = produtos.pratosSem()
     return render_template('index.html', sessoes=sess, pratosfds=pFds, pratossem=pSem)
 
+@app.route('/admin/')
+def admin():
+    lst_clientes = pedidos.obterClientes()
+    lst_prdidos = pedidos.obterPedidos()
+    return render_template('admin.html', lst_clientes=lst_clientes, lst_prdidos=lst_prdidos)
+
 @app.route('/carrinho')
 def carrinho():
     " carrinho "
     itens = session.get('carrinho', [])
     return render_template('carrinho.html', itens=itens)
-
-@app.route('/obterPedido', methods=['POST'])
-def obterPedido():
-    session['pedido'] = ''
-    pedido = request.get_json()
-    session['pedido'] = pedido
-    return jsonify({'status': 'ok', 'dados': pedido}), 200
-
-@app.route('/finalizar')
-def finalizar():
-    # aqui vou pegar os dados dos clientes e armazenar
-    return render_template('finalizar.html')
-
-@app.route('/obterCliente', methods=['POST'])
-def obterCliente():
-    cliente = request.get_json()
-    session['cliente'] = cliente
-    return jsonify({'status': 'ok', 'dados': cliente}), 200
-
-@app.route('/infosPedido')
-def infosPedido():
-    
-    return ''
 
 @app.route('/adicionarCarrinho', methods=['POST'])
 def adicionarCarrinho():
@@ -62,6 +46,40 @@ def removerProdutoCarrinho():
             atual.append(item)
     session['carrinho'] = atual
     return jsonify({'status': 'ok', 'dados': dados}), 200
+
+@app.route('/finalizar')
+def finalizar():
+    return render_template('finalizar.html')
+
+@app.route('/obterPedido', methods=['POST'])
+def obterPedido():
+    session['pedido'] = ''
+    pedido = request.get_json()
+    session['pedido'] = pedido
+    return jsonify({'status': 'ok', 'dados': pedido}), 200
+
+@app.route('/obterTotal', methods=['POST'])
+def obterTotal():
+    session['total'] = ''
+    total = request.get_json()
+    session['total'] = total
+    return jsonify({'status': 'ok', 'dados': total}), 200
+
+@app.route('/obterCliente', methods=['POST'])
+def obterCliente():
+    session['cliente'] = ''
+    cliente = request.get_json()
+    session['cliente'] = cliente
+    return redirect(url_for('enviarPedido'))
+
+@app.route('/enviarPedido')
+def enviarPedido():
+    cliente = session.get('cliente')
+    pedido = session.get('pedido')
+    total = session.get('total')
+    pedidos.enviarPedido(cliente, pedido, total)
+    session.clear()
+    return jsonify({'status': 'ok', 'cliente': cliente}), 200
 
 @app.route('/pratosFds')
 def pratosFds():
