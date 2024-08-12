@@ -74,3 +74,14 @@ def obterPedidos():
     fexar_conexão(con)
     
     return pedidos
+
+def finalizarPedido(id_cliente):
+    con = criar_conexao()
+    cursor = con.cursor()
+
+    sql2 = f"delete from clientes where id = '{id_cliente}';"
+    cursor.execute(sql2)
+    con.commit()
+    
+    cursor.close()
+    fexar_conexão(con)

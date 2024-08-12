@@ -20,6 +20,17 @@ def admin():
     lst_prdidos = pedidos.obterPedidos()
     return render_template('admin.html', lst_clientes=lst_clientes, lst_prdidos=lst_prdidos)
 
+@app.route('/admin/catalogo')
+def catalogo():
+    sess = produtos.sessoes()
+    return render_template('adminCatalogo.html', sessoes=sess)
+
+@app.route('/admin/finalizarPedido', methods=['POST'])
+def finalisarPedido():
+    id_cliente = request.get_json()
+    pedidos.finalizarPedido(id_cliente)
+    return jsonify({'status': 'ok', 'dados': id_cliente}), 200
+
 @app.route('/carrinho')
 def carrinho():
     " carrinho "
