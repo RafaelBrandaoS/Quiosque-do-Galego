@@ -1,5 +1,5 @@
 from flask import Flask, render_template, url_for, request, session, jsonify, redirect
-from python import produtos, pedidos
+from python import produtos, pedidos, gerenciador
 import os
 import pprint
 
@@ -24,6 +24,24 @@ def admin():
 def catalogo():
     sess = produtos.sessoes()
     return render_template('adminCatalogo.html', sessoes=sess)
+
+@app.route('/disponivel', methods=['POST'])
+def disponivel():
+    nomeSessao = request.get_json()
+    
+    gerenciador.sessaoDisponivel(nomeSessao)
+    
+    return jsonify({'status': 'ok', 'dados': nomeSessao}), 200
+
+
+@app.route('/indisponivel', methods=['POST'])
+def indisponivel():
+    nomeSessao = request.get_json()
+    
+    gerenciador.sessaoIndisponivel(nomeSessao)
+    
+    return jsonify({'status': 'ok', 'dados': nomeSessao}), 200
+
 
 @app.route('/admin/finalizarPedido', methods=['POST'])
 def finalisarPedido():

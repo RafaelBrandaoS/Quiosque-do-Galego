@@ -15,6 +15,67 @@ function eventos() {
     for (var i = 0; i < finalizar.length; i++) {
         finalizar[i].addEventListener("click", ffinalizar)
     }
+
+    const disponivel = document.getElementsByClassName('disponivel')
+    for (var i = 0; i < disponivel.length; i++) {
+        disponivel[i].addEventListener("click", fdisponivel)
+    }
+
+    const indisponivel = document.getElementsByClassName('indisponivel')
+    for (var i = 0; i < indisponivel.length; i++) {
+        indisponivel[i].addEventListener("click", findisponivel)
+    }
+
+    const editarProdutos = document.getElementsByClassName('editar-produtos')
+    for (var i = 0; i < editarProdutos.length; i++) {
+        editarProdutos[i].addEventListener("click", feditarProdutos)
+    }
+}
+
+
+function fdisponivel(event) {
+    const container = event.target.parentElement.parentElement
+    const sessao = container.getElementsByClassName('nome-sessao')[0].innerText
+
+    fetch('/disponivel', {
+        method:'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body:JSON.stringify(sessao)
+    })
+    .then(result => {
+        console.log(result)
+        container.classList.remove('recusado'),
+        container.classList.add('aceito')
+    })
+    .catch(error => console.error('Error:',error))
+}
+
+function findisponivel(event) {
+    const container = event.target.parentElement.parentElement
+    const sessao = container.getElementsByClassName('nome-sessao')[0].innerText
+    
+    fetch('/indisponivel', {
+        method:'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body:JSON.stringify(sessao)
+    })
+    .then(result => {
+        console.log(result)
+        container.classList.remove('aceito'),
+        container.classList.add('recusado')
+    })
+    .catch(error => console.error('Error:',error))
+}
+
+
+function feditarProdutos(event) {
+    const container = event.target.parentElement.parentElement
+    const sessao = container.getElementsByClassName('nome-sessao')[0].innerText
+    console.log(sessao)
 }
 
 function fAceitar(event) {

@@ -29,20 +29,20 @@
             {% for sessao in sessoes %}
             {% if sessao[3] == 'disponivel' %}
             <div class="sessao produto-pedido aceito">
-                <h3>{{ sessao[1] }}</h3>
+                <h3 class="nome-sessao">{{ sessao[1] }}</h3>
                 <div class="btn-sessoes btn-admin">
-                    <button>editar produtos</button>
-                    <button>indisponivel</button>
-                    <button>disponivel</button>
+                    <button class="editar-produtos">editar produtos</button>
+                    <button class="indisponivel">indisponivel</button>
+                    <button class="disponivel">disponivel</button>
                 </div>
             </div>
             {% else %}
             <div class="sessao produto-pedido recusado">
-                <h3>{{ sessao[1] }}</h3>
+                <h3 class="nome-sessao">{{ sessao[1] }}</h3>
                 <div class="btn-sessoes btn-admin">
-                    <button>editar produtos</button>
-                    <button>indisponivel</button>
-                    <button>disponivel</button>
+                    <button class="editar-produtos">editar produtos</button>
+                    <button class="indisponivel">indisponivel</button>
+                    <button class="disponivel">disponivel</button>
                 </div>
             </div>
             {% endif %}
