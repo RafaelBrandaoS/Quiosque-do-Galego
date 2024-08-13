@@ -1,7 +1,11 @@
-from flask import Flask, render_template, url_for, request, session, jsonify, redirect
+from flask import Flask, render_template, url_for, request, session, jsonify, redirect, flash
 from python import produtos, pedidos, gerenciador
 import os
-import pprint
+from dotenv import load_dotenv
+
+load_dotenv()
+USUARIO = os.getenv('LOG_USUARIO')
+SENHA = os.getenv('LOG_SENHA')
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24) 
@@ -9,21 +13,69 @@ app.secret_key = os.urandom(24)
 @app.route('/')
 def home():
     " página principal "
+    session['logado'] = False
     sess = produtos.sessoes()
     pFds = produtos.pratosFds()
     pSem = produtos.pratosSem()
     return render_template('index.html', sessoes=sess, pratosfds=pFds, pratossem=pSem)
 
 @app.route('/admin/')
-def admin():
-    lst_clientes = pedidos.obterClientes()
-    lst_prdidos = pedidos.obterPedidos()
-    return render_template('admin.html', lst_clientes=lst_clientes, lst_prdidos=lst_prdidos)
+def login():
+    return render_template('adminLogin.html')
 
-@app.route('/admin/catalogo')
-def catalogo():
-    sess = produtos.sessoes()
-    return render_template('adminCatalogo.html', sessoes=sess)
+@app.route('/admin/validar', methods=['POST'])
+def validar():
+    usuario = request.form.get('usuario')
+    senha = request.form.get('senha')
+    
+    if usuario == USUARIO and senha == SENHA:
+        session['logado'] = True
+        return redirect('/admin/pedidos')
+    else:
+        session['logado'] = False
+        flash('ERRO! usuario ou senha inválida')
+        return redirect('/admin/')
+
+@app.route('/admin/pedidos')
+def admin():
+    if session['logado'] == True:
+        lst_clientes = pedidos.obterClientes()
+        lst_prdidos = pedidos.obterPedidos()
+        return render_template('adminPedidos.html', lst_clientes=lst_clientes, lst_prdidos=lst_prdidos)
+    else:
+        return redirect('/admin/')
+
+@app.route('/admin/rSessoes')
+def rSessoes():
+    if session['logado'] == True:
+        sess = produtos.sessoes()
+        return render_template('adminSessoes.html', sessoes=sess)
+    else:
+        return redirect('/admin/')
+
+@app.route('/admin/rProdutos')
+def rProdutos():
+    if session['logado'] == True:
+        sess = produtos.sessoes()
+        produt = produtos.lstProdutos()
+        return render_template('adminProdutos.html', sessoes=sess, produtos=produt)
+    else:
+        return redirect('/admin/')
+
+@app.route('/admin/aceitar', methods=['POST'])
+def aceitar():
+    id_pedido = request.get_json()
+    print(f'id do cliente {id_pedido}')
+    gerenciador.pedidoAceito(id_pedido)
+    return jsonify({'status': 'ok', 'dados': id_pedido}), 200
+
+@app.route('/admin/recusar', methods=['POST'])
+def recusar():
+    id_pedido = request.get_json()
+    print(f'id do cliente {id_pedido}')
+    gerenciador.pedidoRecusado(id_pedido)
+    return jsonify({'status': 'ok', 'dados': id_pedido}), 200
+
 
 @app.route('/disponivel', methods=['POST'])
 def disponivel():
@@ -42,6 +94,23 @@ def indisponivel():
     
     return jsonify({'status': 'ok', 'dados': nomeSessao}), 200
 
+
+@app.route('/produtoDisponivel', methods=['POST'])
+def produtoDisponivel():
+    idProduto = request.get_json()
+    
+    gerenciador.pDisponivel(idProduto)
+    
+    return jsonify({'status': 'ok', 'dados': idProduto}), 200
+
+
+@app.route('/produtoIndisponivel', methods=['POST'])
+def produtoIndisponivel():
+    idProduto = request.get_json()
+    
+    gerenciador.pIndisponivel(idProduto)
+    
+    return jsonify({'status': 'ok', 'dados': idProduto}), 200
 
 @app.route('/admin/finalizarPedido', methods=['POST'])
 def finalisarPedido():

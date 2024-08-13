@@ -33,9 +33,10 @@
         </nav>
         <section class="produtos">
             <div class="conteiner-produtos">
-                <h2>Pratos do Dia</h2>
+                <h2>PRATOS DO DIA</h2>
                 {% if sessoes[0][3] == 'disponivel' %}
                     {% for prato in pratosfds %}
+                    {% if prato[4] == 'disponivel' %}
                     <div class="produto pratos">
                         <img class="produto-img" src="{{ prato[3] }}" alt="produto img">
                         <div class="dados-produto">
@@ -43,10 +44,11 @@
                             <p class="p-preco">R$ <span>{{ prato[2] }}</span></p>
                         </div>
                     </div>
+                    {% endif %}
                     {% endfor %}
                 {% else %}
-                <h2>Pratos do Dia</h2>
                     {% for prato in pratossem %}
+                    {% if prato[4] == 'disponivel' %}
                     <div class="produto pratos">
                         <img class="produto-img" src="{{ prato[3] }}" alt="produto img">
                         <div class="dados-produto">
@@ -54,6 +56,7 @@
                             <p class="p-preco">R$ <span>{{ prato[2] }}</span></p>
                         </div>
                     </div>
+                    {% endif %}
                     {% endfor %}
                 {% endif %}
             </div>
@@ -80,6 +83,9 @@
                 <p>Quarta a Sábado 09h/23h</p>
                 <p>Domingos e Frriados 09h/22h</p>
             </div>
+        </div>
+        <div class="container-lnk-admin">
+            <a class="lnk-admin" href="{{ url_for('login') }}">editar catalogo</a>
         </div>
     </footer>
     <p class="creditos">site criado por <a href="#">Rafael Brandão</a></p>

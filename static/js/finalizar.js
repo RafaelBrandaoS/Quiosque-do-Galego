@@ -2,19 +2,21 @@ document.addEventListener("DOMContentLoaded", eventos)
 
 function eventos() {
     const btnDadosPessoais = document.getElementById('btn-dados-pessoais')
-    btnDadosPessoais.addEventListener('click', (event) => {
-        const container = event.target.parentElement
-        const nome = container.querySelector('#nome').value
-        const telefone = container.querySelector('#telefone').value
-        if (nome != '' && telefone != '') {
-            container.querySelector('.erro').style.display = 'none'
-            const sessaoEndereco = document.getElementById('endereco')
-            sessaoEndereco.style.display = 'flex'
-        }
-        else {
-            container.querySelector('.erro').style.display = 'block'
-        }
-    })
+    btnDadosPessoais.addEventListener('click', validarNomeTel)
+}
+
+function validarNomeTel(event) {
+    const container = event.target.parentElement
+    const nome = container.querySelector('#nome').value
+    const telefone = container.querySelector('#telefone').value
+    if (nome != '' && telefone != '' && telefone.length == 11) {
+        container.querySelector('.erro').style.display = 'none'
+        const sessaoEndereco = document.getElementById('endereco')
+        sessaoEndereco.style.display = 'flex'
+    }
+    else {
+        container.querySelector('.erro').style.display = 'block'
+    }
 }
 
 function validarCEP(input) {

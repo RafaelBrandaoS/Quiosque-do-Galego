@@ -4,12 +4,23 @@ from python.conexao import criar_conexao, fexar_conexão
 def sessoes():
     con = criar_conexao()
     cursor = con.cursor()
-    sql = "select * from sessoes order by s_nome"
+    sql = "select * from sessoes order by s_nome;"
     cursor.execute(sql)
     sessoes = cursor.fetchall()
     cursor.close()
     fexar_conexão(con)
     return sessoes
+
+
+def lstProdutos():
+    con = criar_conexao()
+    cursor = con.cursor()
+    sql = "select * from produtos;"
+    cursor.execute(sql)
+    listaProdutos = cursor.fetchall()
+    cursor.close()
+    fexar_conexão(con)
+    return listaProdutos
 
 
 def pratosFds():

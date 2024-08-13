@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta http-equiv="refresh" content="5"> -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='estilos/home.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='estilos/admin.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='imagens/favicon.ico') }}" type="image/x-icon">
+    <title>Admin - Quiosque do Galego</title>
+</head>
+<body>
+    <header>
+        <a href="#"><img src="{{ url_for('static', filename='imagens/logo.png') }}" alt="Logo"></a>
+        <div>
+            <a href="{{ url_for('home') }}"><span class="material-symbols-outlined carrinho">undo</span></a>
+        </div>
+    </header>
+    <nav>
+        <a href="{{ url_for('rSessoes') }}">gerenciar sessões</a>
+        <a href="{{ url_for('admin') }}">pedidos</a>
+    </nav>
+    <main>
+        <section>
+            {% for sessao in sessoes %}
+            <div class="container-produtos">
+                <h2 class="nome-sessao-produto">{{ sessao[1] }}</h2>
+                {% for produto in produtos %}
+                {% if produto[5] == sessao[0] %}
+                <div class="produto {% if produto[4] == 'disponivel' %} aceito {% else %} recusado {% endif %}">
+                    <p style="text-align: end;">Id: <span class="id-produto">{{ produto[0] }}</span></p>
+                    <h3 class="nome-produto-geren">{{ produto[1] }}</h3>
+                    <div class="btn-admin btn-produtos">
+                        <button class="p-indisponivel">Indisponivel</button>
+                        <button class="p-disponivel">Disponivel</button>
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+            {% endfor %}
+        </section>
+    </main>
+    <script src="{{ url_for('static', filename='js/admin.js') }}"></script>
+</body>
+</html>

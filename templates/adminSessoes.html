@@ -21,31 +21,20 @@
         </div>
     </header>
     <nav>
-        <a href="{{ url_for('catalogo') }}">gerenciar catalogo</a>
+        <a href="{{ url_for('rProdutos') }}">gerenciar produtos</a>
         <a href="{{ url_for('admin') }}">pedidos</a>
     </nav>
     <main>
         <section>
             {% for sessao in sessoes %}
-            {% if sessao[3] == 'disponivel' %}
-            <div class="sessao produto-pedido aceito">
+            
+            <div class="sessao produto-pedido {% if sessao[3] == 'disponivel' %} aceito {% else %} recusado {% endif %}">
                 <h3 class="nome-sessao">{{ sessao[1] }}</h3>
                 <div class="btn-sessoes btn-admin">
-                    <button class="editar-produtos">editar produtos</button>
                     <button class="indisponivel">indisponivel</button>
                     <button class="disponivel">disponivel</button>
                 </div>
             </div>
-            {% else %}
-            <div class="sessao produto-pedido recusado">
-                <h3 class="nome-sessao">{{ sessao[1] }}</h3>
-                <div class="btn-sessoes btn-admin">
-                    <button class="editar-produtos">editar produtos</button>
-                    <button class="indisponivel">indisponivel</button>
-                    <button class="disponivel">disponivel</button>
-                </div>
-            </div>
-            {% endif %}
             {% endfor %}
         </section>
     </main>

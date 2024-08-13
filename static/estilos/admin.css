@@ -19,6 +19,7 @@ section {
     flex-direction: column;
     gap: 10px;
     padding: 10px;
+    min-height: calc(100vh - 121px);
 }
 
 .pedido-admin {
@@ -99,4 +100,36 @@ div.recusado {
 
 .btn-sessoes > button {
     min-width: 120px;
+}
+
+div.btn-produtos {
+    justify-content: space-around;
+}
+
+.container-produtos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+h2.nome-sessao-produto {
+    text-align: center;
+    margin: 10px 0px;
+    width: 100%;
+}
+
+.produto {
+    padding: 10px;
+    min-width: 48%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.produto > h3 {
+    color: black;
+    text-shadow: none;
+    margin-bottom: 10px;
+    text-align: center;
 }
