@@ -141,3 +141,14 @@ def cervejasLong():
     cursor.close()
     fexar_conexão(con)
     return produtos
+
+
+def porcoes():
+    con = criar_conexao()
+    cursor = con.cursor()
+    sql = "select * from produtos where sessao_id = '12' order by p_nome"
+    cursor.execute(sql)
+    produtos = cursor.fetchall()
+    cursor.close()
+    fexar_conexão(con)
+    return produtos

@@ -244,5 +244,11 @@ def cervejasLong():
     cer = produtos.cervejasLong()
     return render_template('cervejasLong.html', produtos=cer)
 
+
+@app.route('/porcoes')
+def porcoes():
+    por = produtos.porcoes()
+    return render_template('porcoes.html', produtos=por)
+
 if __name__ == '__main__':
     app.run(debug=True)
