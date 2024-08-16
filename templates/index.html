@@ -33,32 +33,52 @@
         </nav>
         <section class="produtos">
             <div class="conteiner-produtos">
-                <h2>PRATOS DO DIA</h2>
                 {% if sessoes[0][3] == 'disponivel' %}
+                    <h2>PRATOS DO DIA</h2>
                     {% for prato in pratosfds %}
-                    {% if prato[4] == 'disponivel' %}
-                    <div class="produto pratos">
-                        <img class="produto-img" src="{{ prato[3] }}" alt="produto img">
-                        <div class="dados-produto">
-                            <p class="nome-produto">{{ prato[1] }}</p>
-                            <p class="p-preco">R$ <span>{{ prato[2] }}</span></p>
+                        {% if prato[4] == 'disponivel' %}
+                        <div class="produto pratos {{ prato[1].split()[0] }}">
+                            <img class="produto-img" src="{{ prato[3] }}" alt="produto img">
+                            <div class="dados-produto">
+                                <p class="nome-produto">{{ prato[1] }}</p>
+                                <p class="p-preco">R$ <span>{{ prato[2] }}</span></p>
+                            </div>
                         </div>
-                    </div>
-                    {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                {% elif sessoes[1][3] == 'disponivel' %}
+                    <h2>PRATOS DO DIA</h2>
+                    {% for prato in pratossem %}
+                        {% if prato[4] == 'disponivel' %}
+                        <div class="produto pratos">
+                            <img class="produto-img" src="{{ prato[3] }}" alt="produto img">
+                            <div class="dados-produto">
+                                <p class="nome-produto">{{ prato[1] }}</p>
+                                <p class="p-preco">R$ <span>{{ prato[2] }}</span></p>
+                            </div>
+                        </div>
+                        {% endif %}
                     {% endfor %}
                 {% else %}
-                    {% for prato in pratossem %}
-                    {% if prato[4] == 'disponivel' %}
-                    <div class="produto pratos">
-                        <img class="produto-img" src="{{ prato[3] }}" alt="produto img">
-                        <div class="dados-produto">
-                            <p class="nome-produto">{{ prato[1] }}</p>
-                            <p class="p-preco">R$ <span>{{ prato[2] }}</span></p>
+                    <h2>BEBIDAS DIVERSAS</h2>
+                    {% for bebida in bebidas %}
+                        {% if bebida[4] == 'disponivel' %}
+                        <div class="produto pratos">
+                            <img class="produto-img" src="{{ bebida[3] }}" alt="produto img">
+                            <div class="dados-produto">
+                                <p class="nome-produto">{{ bebida[1] }}</p>
+                                <p class="p-preco">R$ <span>{{ bebida[2] }}</span></p>
+                            </div>
                         </div>
-                    </div>
-                    {% endif %}
+                        {% endif %}
                     {% endfor %}
                 {% endif %}
+            </div>
+        </section>
+        <section class="loading">
+            <div>
+                <span class="carregando"></span>
+                <h2>Carregando...</h2>
             </div>
         </section>
     </main>
@@ -66,9 +86,9 @@
     <footer>
         <div class="sociais">
             <h3>REDES SOCIAIS:</h3>
-            <a href="#">Instagram <img src="../static/imagens/instagram.png" alt="social"></a>
-            <a href="#">Facebook <img src="../static/imagens/instagram.png" alt="social"></a>
-            <a href="#">WhatsApp <img src="../static/imagens/whatsapp.png" alt="social"></a>
+            <a href="https://www.instagram.com/quiosquedogalego/" target="_blank"><img src="../static/imagens/instagram.png" alt="social">Instagram</a>
+            <a href="https://www.facebook.com/quiosquedogalego/" target="_blank"><img src="../static/imagens/facebook.png" alt="social">Facebook</a>
+            <a href="https://wa.me/61993902741/" target="_blank"><img src="../static/imagens/whatsapp.png" alt="social">WhatsApp</a>
         </div>
         <div class="informacoes">
             <div class="endereco">
@@ -88,7 +108,7 @@
             <a class="lnk-admin" href="{{ url_for('login') }}">editar catalogo</a>
         </div>
     </footer>
-    <p class="creditos">site criado por <a href="https://wa.me/61991551963/">Rafael Brandão</a></p>
+    <p class="creditos">site criado por <a href="https://wa.me/61991551963/" target="_blank">Rafael Brandão</a></p>
     <script src="{{ url_for('static', filename='js/index.js') }}"></script>
 </body>
 </html>

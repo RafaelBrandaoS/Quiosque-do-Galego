@@ -17,7 +17,8 @@ def home():
     sess = produtos.sessoes()
     pFds = produtos.pratosFds()
     pSem = produtos.pratosSem()
-    return render_template('index.html', sessoes=sess, pratosfds=pFds, pratossem=pSem)
+    bebidas = produtos.diversas()
+    return render_template('index.html', sessoes=sess, pratosfds=pFds, pratossem=pSem, bebidas=bebidas)
 
 @app.route('/admin/')
 def login():

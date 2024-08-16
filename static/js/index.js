@@ -28,12 +28,37 @@ function mostrarDetalhes(event) {
     const p_nome = produto.getElementsByClassName('nome-produto')[0].innerText
     const p_preco = produto.querySelector('.p-preco > span').innerText
     const amostra = document.getElementsByClassName('detalhes')
+    document.body.style.overflowY = 'hidden'
     for (var i = 0; i < amostra.length; i++) {
         amostra[i].remove()
     }
     const container = document.querySelector('body')
     let detalhes = document.createElement('div')
-    if (produto.classList.contains('pratos')) {
+    if (produto.classList.contains('Feijoada')){
+        detalhes.innerHTML = `
+        <div class="dados-detalhes">
+            <div>
+                <img src="${p_imagem}" alt="${p_nome}">
+            </div>
+            <div class="dados-produto-detalhes">
+                <p>Marmitex</p>
+                <h2 class="nome-detalhes">${p_nome}</h2>
+                <p class="p-preco">R$ <samp class="preco-produto" >${p_preco}</samp></p>
+            </div>
+            <div class="acompanhamentos">
+                <label class="acc" for="arroz"><input type="checkbox" name="arroz" id="arroz"> Arroz</label>
+                <label class="acc" for="batata"><input type="checkbox" name="batata" id="batata"> Couve Refogado</label>
+                <label class="acc" for="farofa"><input type="checkbox" name="farofa" id="farofa"> Farofa da Casa</label>
+                <label class="acc" for="caldo"><input type="checkbox" name="caldo" id="caldo"> Torresmo</label>
+                <label class="obs" for="obs">Observação: <input  type="text" name="obs" id="obs" autocomplete="off"></label>
+            </div>
+            <div class="butoes-detalhes">
+                <button class="add-carrinho cancelar">Cancelar</button>
+                <button class="add-carrinho adicionar">Adicionar ao Carrinho</button>
+            </div>
+        </div>
+        `
+    } else if (produto.classList.contains('pratos')) {
         detalhes.innerHTML = `
         <div class="dados-detalhes">
             <div>
@@ -63,8 +88,7 @@ function mostrarDetalhes(event) {
             </div>
         </div>
         `
-    } 
-    else if (produto.classList.contains('jantinha')) {
+    } else if (produto.classList.contains('jantinha')) {
         detalhes.innerHTML = `
         <div class="dados-detalhes">
             <div>
@@ -114,6 +138,7 @@ function mostrarDetalhes(event) {
     const fexar = detalhes.getElementsByClassName('cancelar')[0]
     fexar.addEventListener("click", () => {
         detalhes.remove()
+        document.body.style.overflowY = 'scroll'
     })
 
     const opcoes = detalhes.querySelectorAll('.acc > input')
@@ -143,6 +168,9 @@ function mostrarDetalhes(event) {
 
 function carregarSessao(sessao) {
     const container = document.getElementsByClassName('produtos')[0]
+    const loading = document.getElementsByClassName('loading')[0]
+    loading.style.display = 'block'
+    document.body.style.overflowY = 'hidden'
     fetch(`/${sessao}`)
         .then(response => response.text())
         .then(html => {
@@ -154,6 +182,10 @@ function carregarSessao(sessao) {
             }
             document.getElementsByClassName('conteiner-produtos')[0].style.display = 'flex';
             clickProduto()
+        })
+        .finally(() => {
+            loading.style.display = 'none'
+            document.body.style.overflowY = 'scroll'
         })
         .catch(error => console.error('Erro ao carregar a seção:', error));
 }
@@ -176,6 +208,8 @@ function obterDadosProduto(event) {
 }
 
 function enviarDadosProduto(dados, container) {
+    const loading = document.getElementsByClassName('loading')[0]
+    loading.style.display = 'block'
     fetch('/adicionarCarrinho', {
         method:'POST',
         headers: {
@@ -184,6 +218,10 @@ function enviarDadosProduto(dados, container) {
         body: JSON.stringify(dados)
     })
     .then(response => response.text())
+    .finally(() => {
+        loading.style.display = 'none'
+        document.body.style.overflowY = 'scroll'
+        container.parentElement.remove()
+    })
     .catch(error => console.error('Error:', error))
-    container.parentElement.remove()
 }

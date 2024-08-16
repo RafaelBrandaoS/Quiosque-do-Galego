@@ -15,7 +15,7 @@ html {
 body {
     width: 100%;
     position: relative;
-    border: 1px solid black;
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.501);
     padding-top: 70px;
 }
 
@@ -264,6 +264,51 @@ label.marcado {
     border: none;
 }
 
+.loading {
+    display: none;
+    transition: .5s;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    max-width: 600px;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.534);
+}
+
+.loading > div {
+    position: fixed;
+    text-align: center;
+    width: 100%;
+    max-width: 600px;
+    top: 40%;
+}
+
+.loading > div > h2 {
+    color: #fdfcf9;
+    margin-top: 20px;
+}
+
+.carregando {
+    display: block;
+    width: 60px;
+    height: 60px;
+    border: 10px solid #ff8400;
+    border-top: 10px solid transparent;
+    border-radius: 50%;
+    margin: 0px auto;
+    animation: anim-loading 1s linear infinite;
+}
+
+@keyframes anim-loading {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360DEG);
+    }
+}
+
 footer {
     background: radial-gradient(#f7a145, #ff8400);
     display: flex;
@@ -286,7 +331,7 @@ footer {
     text-align: center;
     padding: 2px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     box-shadow: 0px 0px 3px #00000065;
     color: #25211b;

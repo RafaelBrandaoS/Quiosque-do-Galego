@@ -42,8 +42,8 @@ def enviarPedido(cliente, pedido, total):
         sql3 = "INSERT INTO pedidos (cliente_id, nome_produto, acompanhamentos, obs, preco, quantidade) VALUES (%s, %s, %s, %s, %s, %s);"
         valores3 = (cliente_id, nome_produto, acom, obs, preco, qtd)
         cursor.execute(sql3, valores3)
+        con.commit()
     
-    con.commit()
     cursor.close()
     fexar_conexão(con)
 

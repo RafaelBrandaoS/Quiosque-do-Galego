@@ -1,6 +1,6 @@
 <div class="conteiner-produtos">
     <h2>PÃO DELICIA</h2>
-    {% if produto[0][4] == 'disponivel' %}
+    {% if produtos[0][4] == 'disponivel' %}
     <div class="produto produto-1">
         <img class="produto-img" src="{{ produtos[0][3] }}" alt="produto img">
         <div class="dados-produto dados-produto-1">
@@ -10,7 +10,7 @@
         </div>
     </div>
     {% endif %}
-    {% if produto[1][4] == 'disponivel' %}
+    {% if produtos[1][4] == 'disponivel' %}
     <div class="produto produto-1">
         <img class="produto-img" src="{{ produtos[1][3] }}" alt="produto img">
         <div class="dados-produto dados-produto-1">
@@ -20,7 +20,7 @@
         </div>
     </div>
     {% endif %}
-    {% if produto[2][4] == 'disponivel' %}
+    {% if produtos[2][4] == 'disponivel' %}
     <div class="produto produto-1">
         <img class="produto-img" src="{{ produtos[2][3] }}" alt="produto img">
         <div class="dados-produto dados-produto-1">

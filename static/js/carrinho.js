@@ -55,6 +55,8 @@ function finalizarPedido() {
 }
 
 function obterDadosProdutoPedido() {
+    const loading = document.getElementsByClassName('loading')[0]
+    loading.style.display = 'block'
     const container = document.getElementsByClassName('carrinho-produtos')[0]
     const total = document.getElementsByClassName('total')[0].innerText
     let pedido = []
@@ -99,8 +101,7 @@ async function enviarTotal(total) {
         },
         body: JSON.stringify(total)
     })
-    .then(result => {
-        console.log('Sucesso:', result);
+    .finally(() => {
         window.location.href = '/finalizar';
     })
     .catch(error => console.error('Error:', error))

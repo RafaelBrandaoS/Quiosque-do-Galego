@@ -150,6 +150,9 @@ function obterCliente() {
 }
 
 function enviarCliente(cliente) {
+    const loading = document.getElementsByClassName('loading')[0]
+    loading.style.display = 'block'
+    document.body.style.overflowY = 'hidden'
     fetch("/obterCliente", {
         method: 'POST',
         headers: {
