@@ -17,7 +17,6 @@ def enviarPedido(cliente, pedido, total):
         troco = float(cliente['troco'])
     tot =  float(total['total'])
     
-    print(nome_cliente, tel_cliente, endereco_cliente, casa_cliente, pagamento, troco, tot)
     sql1 = "INSERT INTO clientes (cliente, tel, endereco, casa, pagamento, troco, total) VALUES (%s, %s, %s, %s, %s, %s, %s);"
     valores1 = (nome_cliente, tel_cliente, endereco_cliente, casa_cliente, pagamento, troco, tot)
     cursor.execute(sql1, valores1)

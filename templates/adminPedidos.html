@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <meta http-equiv="refresh" content="5"> -->
+    <meta http-equiv="refresh" content="20">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,6 +26,9 @@
     </nav>
     <main>
         <section>
+            {% if lst_clientes == [] %}
+            <p style="text-align: center; margin-top: 20px;">ainda não há pedidos</p>
+            {% endif %}
             {% for cliente in lst_clientes %}
             <div class="pedido-admin {% if cliente[8] == 'aceito' %} aceito {% elif cliente[8] == 'recusado' %} recusado {% endif %}">
                 <div class="dados-cliente">

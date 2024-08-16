@@ -19,6 +19,7 @@ def home():
     pSem = produtos.pratosSem()
     bebidas = produtos.diversas()
     return render_template('index.html', sessoes=sess, pratosfds=pFds, pratossem=pSem, bebidas=bebidas)
+print
 
 @app.route('/admin/')
 def login():
@@ -66,14 +67,12 @@ def rProdutos():
 @app.route('/admin/aceitar', methods=['POST'])
 def aceitar():
     id_pedido = request.get_json()
-    print(f'id do cliente {id_pedido}')
     gerenciador.pedidoAceito(id_pedido)
     return jsonify({'status': 'ok', 'dados': id_pedido}), 200
 
 @app.route('/admin/recusar', methods=['POST'])
 def recusar():
     id_pedido = request.get_json()
-    print(f'id do cliente {id_pedido}')
     gerenciador.pedidoRecusado(id_pedido)
     return jsonify({'status': 'ok', 'dados': id_pedido}), 200
 
@@ -139,7 +138,6 @@ def removerProdutoCarrinho():
     dados = request.get_json()
     carrinho = session.get('carrinho', [])
     atual = []
-    print(carrinho)
     for item in carrinho:
         if item['nome'] != dados['nome']:
             atual.append(item)

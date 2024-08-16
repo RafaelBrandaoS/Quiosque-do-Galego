@@ -9,7 +9,7 @@
 html {
     max-width: 600px;
     margin: 0px auto;
-
+    scrollbar-width: thin;
 }
 
 body {
@@ -293,8 +293,10 @@ label.marcado {
     display: block;
     width: 60px;
     height: 60px;
-    border: 10px solid #ff8400;
-    border-top: 10px solid transparent;
+    border-right: 10px dotted #ff8400;
+    border-top: 10px dotted #ff8400b6;
+    border-left: 10px dotted #ff840070;
+    border-bottom: 10px dotted #ff840020;
     border-radius: 50%;
     margin: 0px auto;
     animation: anim-loading 1s linear infinite;
