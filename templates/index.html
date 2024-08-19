@@ -13,9 +13,11 @@
 </head>
 <body>
     <header>
-        <a href="#"><img src="{{ url_for('static', filename='imagens/logo.png') }}" alt="Logo"></a>
-        <div>
-            <a href="{{ url_for('carrinho') }}"><span class="material-symbols-outlined carrinho">shopping_cart</span></a>
+        <div class="cabecalho-container">
+            <a href="#"><img src="{{ url_for('static', filename='imagens/logo.png') }}" alt="Logo"></a>
+            <div>
+                <a href="{{ url_for('carrinho') }}"><span class="material-symbols-outlined carrinho">shopping_cart</span></a>
+            </div>
         </div>
     </header>
     <main>
@@ -84,28 +86,30 @@
     </main>
     </div>
     <footer>
-        <div class="sociais">
-            <h3>REDES SOCIAIS:</h3>
-            <a href="https://www.instagram.com/quiosquedogalego/" target="_blank"><img src="../static/imagens/instagram.png" alt="social">Instagram</a>
-            <a href="https://www.facebook.com/quiosquedogalego/" target="_blank"><img src="../static/imagens/facebook.png" alt="social">Facebook</a>
-            <a href="https://wa.me/61993902741/" target="_blank"><img src="../static/imagens/whatsapp.png" alt="social">WhatsApp</a>
-        </div>
-        <div class="informacoes">
-            <div class="endereco">
-                <h3>VENHA NOS VISITAR</h3>
-                <p>Praça da QE 19 - Guará II</p>
-                <p>Brasília - DF</p>
+        <div class="footer-container">
+            <div class="sociais">
+                <h3>REDES SOCIAIS:</h3>
+                <a href="https://www.instagram.com/quiosquedogalego/" target="_blank"><img src="../static/imagens/instagram.png" alt="social">Instagram</a>
+                <a href="https://www.facebook.com/quiosquedogalego/" target="_blank"><img src="../static/imagens/facebook.png" alt="social">Facebook</a>
+                <a href="https://wa.me/61993902741/" target="_blank"><img src="../static/imagens/whatsapp.png" alt="social">WhatsApp</a>
             </div>
-            <div class="funcionamento">
-                <h3>FUNCIONAMENTO</h3>
-                <p>Segunda-Feira Fechado</p>
-                <p>Terça-Feira 09h/16h</p>
-                <p>Quarta a Sábado 09h/23h</p>
-                <p>Domingos e Frriados 09h/22h</p>
+            <div class="informacoes">
+                <div class="endereco">
+                    <h3>VENHA NOS VISITAR</h3>
+                    <p>Praça da QE 19 - Guará II</p>
+                    <p>Brasília - DF</p>
+                </div>
+                <div class="funcionamento">
+                    <h3>FUNCIONAMENTO</h3>
+                    <p>Segunda-Feira Fechado</p>
+                    <p>Terça-Feira 09h/16h</p>
+                    <p>Quarta a Sábado 09h/23h</p>
+                    <p>Domingos e Frriados 09h/22h</p>
+                </div>
             </div>
-        </div>
-        <div class="container-lnk-admin">
-            <a class="lnk-admin" href="{{ url_for('login') }}">editar catalogo</a>
+            <div class="container-lnk-admin">
+                <a class="lnk-admin" href="{{ url_for('login') }}">editar catalogo</a>
+            </div>
         </div>
     </footer>
     <p class="creditos">site criado por <a href="https://rafael-portfolio.up.railway.app/" target="_blank">Rafael Brandão</a></p>

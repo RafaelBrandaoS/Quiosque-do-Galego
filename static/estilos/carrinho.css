@@ -6,11 +6,13 @@ h2.tt-carrinho {
 }
 
 .carrinho-produtos {
-    min-height: calc(100vh - 200px);
+    min-height: calc(100dvh - 200px);
     padding: 15px;
     display: flex;
     flex-direction: column;
     gap: 10px;
+    max-width: 900px;
+    margin: 0 auto;
 }
 
 .produto-n-carrinho {
@@ -90,10 +92,15 @@ div.dados {
 
 .finalizar {
     width: 100%;
+    box-shadow: 0px -2px 3px #84a5325e;
+}
+
+.finalizar-container {
+    max-width: 900px;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     padding: 15px;
-    box-shadow: 0px -2px 3px #84a5325e;
 }
 
 .endereco-entrega {

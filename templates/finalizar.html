@@ -14,14 +14,16 @@
 </head>
 <body>
     <header>
-        <a href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='imagens/logo.png') }}" alt="Logo"></a>
-        <div>
-            <a href="{{ url_for('carrinho') }}"><span class="material-symbols-outlined carrinho">undo</span></a>
+        <div class="cabecalho-container">
+            <a href="#"><img src="{{ url_for('static', filename='imagens/logo.png') }}" alt="Logo"></a>
+            <div>
+                <a href="{{ url_for('carrinho') }}"><span class="material-symbols-outlined carrinho">shopping_cart</span></a>
+            </div>
         </div>
     </header>
     <h2 class="tt-finalizar">Finalizando Pedido</h2>
     <main>
-        <section class="dados-pessoais">
+        <section class="form dados-pessoais">
             <h3>Dados Pessoais</h3>
             <div class="dados-pessoais-dados">
                 <label class="label" for="nome"><input type="text" name="nome" id="nome" autocomplete="off" placeholder="nome"></label>
@@ -31,7 +33,7 @@
             </div>
             <button id="btn-dados-pessoais">Continuar</button>
         </section>
-        <section class="endereco" id="endereco" style="display: none;">
+        <section class="form endereco" id="endereco" style="display: none;">
             <h3>Endereço da Entrega</h3>
             <label class="label" for="cep"><input type="number" name="cep" id="cep" maxlength="9" oninput="validarCEP(this)" placeholder="digite seu CEP"></label>
             <p class="erro1 aviso" style="display: none; color: red;">digite o cep corretamente</p>
@@ -46,7 +48,7 @@
 
             </div>
         </section>
-        <section class="pagamento" id="pagamento" style="display: none;">
+        <section class="form pagamento" id="pagamento" style="display: none;">
             <h3>Forma de pagamento</h3>
             <div class="pagamento-opcoes">
                 <label for="pix">Pix: <input type="checkbox" class="m-pagamento" name="pix" id="pix"></label>
@@ -61,7 +63,7 @@
             <button class="btn-pagamento">Continuar</button>
             <p class="erro4 aviso" style="display: none; color: red;">escolha a forma de pagamento</p>
         </section>
-        <section class="finalizar" id="finalizar" style="display: none;">
+        <section class="form finalizar" id="finalizar" style="display: none;">
             <p class="aviso">confira se todos os dados estão corretos</p>
             <button class="pedir">Enviar Pedido</button>
         </section>
@@ -73,28 +75,30 @@
         </section>
     </main>
     <footer>
-        <div class="sociais">
-            <h3>REDES SOCIAIS:</h3>
-            <a href="https://www.instagram.com/quiosquedogalego/" target="_blank"><img src="../static/imagens/instagram.png" alt="social">Instagram</a>
-            <a href="https://www.facebook.com/quiosquedogalego/" target="_blank"><img src="../static/imagens/facebook.png" alt="social">Facebook</a>
-            <a href="https://wa.me/61993902741/" target="_blank"><img src="../static/imagens/whatsapp.png" alt="social">WhatsApp</a>
-        </div>
-        <div class="informacoes">
-            <div class="endereco">
-                <h3>VENHA NOS VISITAR</h3>
-                <p>Praça da QE 19 - Guará II</p>
-                <p>Brasília - DF</p>
+        <div class="footer-container">
+            <div class="sociais">
+                <h3>REDES SOCIAIS:</h3>
+                <a href="https://www.instagram.com/quiosquedogalego/" target="_blank"><img src="../static/imagens/instagram.png" alt="social">Instagram</a>
+                <a href="https://www.facebook.com/quiosquedogalego/" target="_blank"><img src="../static/imagens/facebook.png" alt="social">Facebook</a>
+                <a href="https://wa.me/61993902741/" target="_blank"><img src="../static/imagens/whatsapp.png" alt="social">WhatsApp</a>
             </div>
-            <div class="funcionamento">
-                <h3>FUNCIONAMENTO</h3>
-                <p>Segunda-Feira Fechado</p>
-                <p>Terça-Feira 09h/16h</p>
-                <p>Quarta a Sábado 09h/23h</p>
-                <p>Domingos e Frriados 09h/22h</p>
+            <div class="informacoes">
+                <div class="endereco">
+                    <h3>VENHA NOS VISITAR</h3>
+                    <p>Praça da QE 19 - Guará II</p>
+                    <p>Brasília - DF</p>
+                </div>
+                <div class="funcionamento">
+                    <h3>FUNCIONAMENTO</h3>
+                    <p>Segunda-Feira Fechado</p>
+                    <p>Terça-Feira 09h/16h</p>
+                    <p>Quarta a Sábado 09h/23h</p>
+                    <p>Domingos e Frriados 09h/22h</p>
+                </div>
             </div>
-        </div>
-        <div class="container-lnk-admin">
-            <a class="lnk-admin" href="{{ url_for('login') }}">editar catalogo</a>
+            <div class="container-lnk-admin">
+                <a class="lnk-admin" href="{{ url_for('login') }}">editar catalogo</a>
+            </div>
         </div>
     </footer>
     <p class="creditos">site criado por <a href="https://rafael-portfolio.up.railway.app/" target="_blank">Rafael Brandão</a></p>

@@ -15,9 +15,11 @@
 </head>
 <body>
     <header>
-        <a href="#"><img src="{{ url_for('static', filename='imagens/logo.png') }}" alt="Logo"></a>
-        <div>
-            <a href="{{ url_for('home') }}"><span class="material-symbols-outlined carrinho">undo</span></a>
+        <div class="cabecalho-container">
+            <a href="#"><img src="{{ url_for('static', filename='imagens/logo.png') }}" alt="Logo"></a>
+            <div>
+                <a href="{{ url_for('home') }}"><span class="material-symbols-outlined carrinho">undo</span></a>
+            </div>
         </div>
     </header>
     <nav>
