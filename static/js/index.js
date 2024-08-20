@@ -168,16 +168,14 @@ function mostrarDetalhes(event) {
         document.body.style.overflowY = 'scroll'
     })
 
-    const opcoes = detalhes.querySelectorAll('.acc-pratos')
-    let quant = 0
-    for (var i = 0; i < opcoes.length; i++) {
-        opcoes[i].addEventListener('change', function () {
+    const pratosAcc =  detalhes.querySelectorAll('.acc-pratos')
+    quant = 0
+    for (var i = 0; i < pratosAcc.length; i++) {
+        pratosAcc[i].addEventListener('change', function () {
             if (this.checked) {
                 quant += 1
-                this.parentElement.classList.add('marcado')
             } else {
                 quant -= 1
-                this.parentElement.classList.remove('marcado')
             }
             if (quant > 4) {
                 let valor = +p_preco + ((quant - 4) * 5)
@@ -185,6 +183,18 @@ function mostrarDetalhes(event) {
                 document.getElementsByClassName('preco-produto')[0].innerText = valor
             } else {
                 document.getElementsByClassName('preco-produto')[0].innerText = p_preco
+            }
+        });
+    }
+
+    const opcoes = detalhes.querySelectorAll('.acc > input')
+    for (var i = 0; i < opcoes.length; i++) {
+        opcoes[i].addEventListener('change', function () {
+            if (this.checked) {
+                console.log(this)
+                this.parentElement.classList.add('marcado')
+            } else {
+                this.parentElement.classList.remove('marcado')
             }
         });
     }
