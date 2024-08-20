@@ -215,6 +215,12 @@ div.butoes-detalhes {
     justify-content: space-between;
 }
 
+.tt-molhos {
+    width: 100%;
+    color: black;
+    text-shadow: none;
+}
+
 .add-carrinho {
     padding: 10px;
     background-color: #30c730;

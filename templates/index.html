@@ -39,7 +39,7 @@
                     <h2>PRATOS DO DIA</h2>
                     {% for prato in pratosfds %}
                         {% if prato[4] == 'disponivel' %}
-                        <div class="produto pratos {{ prato[1].split()[0] }}">
+                        <div class="produto {% if prato[1] == 'Feijoada do Galego' %}feijoada{% else %}pratos{% endif %}">
                             <img class="produto-img" src="{{ prato[3] }}" alt="produto img">
                             <div class="dados-produto">
                                 <p class="nome-produto">{{ prato[1] }}</p>

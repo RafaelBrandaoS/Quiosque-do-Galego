@@ -1,9 +1,10 @@
 from python.conexao import criar_conexao, fexar_conexão
 
-def enviarPedido(cliente, pedido, total):
+def enviar_pedido(cliente, pedido, total):
     con = criar_conexao()
     cursor = con.cursor()
     
+    print(cliente, pedido, total)
     
     " dados do cliente "
     nome_cliente = str(cliente['nome'])

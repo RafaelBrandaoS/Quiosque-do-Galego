@@ -34,7 +34,7 @@ function mostrarDetalhes(event) {
     }
     const container = document.querySelector('body')
     let detalhes = document.createElement('div')
-    if (produto.classList.contains('Feijoada')){
+    if (produto.classList.contains('feijoada')){
         detalhes.innerHTML = `
         <div class="dados-detalhes">
             <div>
@@ -46,10 +46,10 @@ function mostrarDetalhes(event) {
                 <p class="p-preco">R$ <samp class="preco-produto" >${p_preco}</samp></p>
             </div>
             <div class="acompanhamentos">
-                <label class="acc" for="arroz"><input type="checkbox" name="arroz" id="arroz"> Arroz</label>
-                <label class="acc" for="batata"><input type="checkbox" name="batata" id="batata"> Couve Refogado</label>
-                <label class="acc" for="farofa"><input type="checkbox" name="farofa" id="farofa"> Farofa da Casa</label>
-                <label class="acc" for="caldo"><input type="checkbox" name="caldo" id="caldo"> Torresmo</label>
+                <label class="acc" for="arroz"><input class="acc-feijoada" type="checkbox" name="arroz" id="arroz"> Arroz</label>
+                <label class="acc" for="couve"><input class="acc-feijoada" type="checkbox" name="couve" id="couve"> Couve Refogado</label>
+                <label class="acc" for="farofa"><input class="acc-feijoada" type="checkbox" name="farofa" id="farofa"> Farofa da Casa</label>
+                <label class="acc" for="torresmo"><input class="acc-feijoada" type="checkbox" name="torresmo" id="torresmo"> Torresmo</label>
                 <label class="obs" for="obs">Observação: <input  type="text" name="obs" id="obs" autocomplete="off"></label>
             </div>
             <div class="butoes-detalhes">
@@ -72,14 +72,14 @@ function mostrarDetalhes(event) {
                 <p>extra será cobrado R$ 5.00 a mais</p>
             </div>
             <div class="acompanhamentos">
-                <label class="acc" for="arroz"><input type="checkbox" name="arroz" id="arroz"> Arroz</label>
-                <label class="acc" for="batata"><input type="checkbox" name="batata" id="batata"> Batata Frita</label>
-                <label class="acc" for="farofa"><input type="checkbox" name="farofa" id="farofa"> Farofa da Casa</label>
-                <label class="acc" for="caldo"><input type="checkbox" name="caldo" id="caldo"> Feijão de Caldo</label>
-                <label class="acc" for="tropeiro"><input type="checkbox" name="tropeiro" id="tropeiro"> Feijão Tropeiro</label>
-                <label class="acc" for="mandioca"><input type="checkbox" name="mandioca" id="mandioca"> Mandioca Cozida</label>
-                <label class="acc" for="ovo"><input type="checkbox" name="ovo" id="ovo"> Ovo Frito</label>
-                <label class="acc" for="salada"><input type="checkbox" name="salada" id="salada"> Salada Alface e Tomate</label>
+                <label class="acc" for="arroz"><input class="acc-pratos" type="checkbox" name="arroz" id="arroz"> Arroz</label>
+                <label class="acc" for="batata"><input class="acc-pratos" type="checkbox" name="batata" id="batata"> Batata Frita</label>
+                <label class="acc" for="farofa"><input class="acc-pratos" type="checkbox" name="farofa" id="farofa"> Farofa da Casa</label>
+                <label class="acc" for="caldo"><input class="acc-pratos" type="checkbox" name="caldo" id="caldo"> Feijão de Caldo</label>
+                <label class="acc" for="tropeiro"><input class="acc-pratos" type="checkbox" name="tropeiro" id="tropeiro"> Feijão Tropeiro</label>
+                <label class="acc" for="mandioca"><input class="acc-pratos" type="checkbox" name="mandioca" id="mandioca"> Mandioca Cozida</label>
+                <label class="acc" for="ovo"><input class="acc-pratos" type="checkbox" name="ovo" id="ovo"> Ovo Frito</label>
+                <label class="acc" for="salada"><input class="acc-pratos" type="checkbox" name="salada" id="salada"> Salada Alface e Tomate</label>
                 <label class="obs" for="obs">Observação: <input  type="text" name="obs" id="obs" autocomplete="off"></label>
             </div>
             <div class="butoes-detalhes">
@@ -100,10 +100,10 @@ function mostrarDetalhes(event) {
                 <h3>Escolha os acompanhamentos.</h3>
             </div>
             <div class="acompanhamentos">
-                <label class="acc" for="arroz"><input type="checkbox" name="arroz" id="arroz"> Arroz</label>
-                <label class="acc" for="tropeiro"><input type="checkbox" name="tropeiro" id="tropeiro"> Feijão Tropeiro</label>
-                <label class="acc" for="mandioca"><input type="checkbox" name="mandioca" id="mandioca"> Mandioca Cozida</label>
-                <label class="acc" for="vinagrete"><input type="checkbox" name="vinagrete" id="vinagrete"> Vinagrete</label>
+                <label class="acc" for="arroz"><input class="acc-jantinha" type="checkbox" name="arroz" id="arroz"> Arroz</label>
+                <label class="acc" for="tropeiro"><input class="acc-jantinha" type="checkbox" name="tropeiro" id="tropeiro"> Feijão Tropeiro</label>
+                <label class="acc" for="mandioca"><input class="acc-jantinha" type="checkbox" name="mandioca" id="mandioca"> Mandioca Cozida</label>
+                <label class="acc" for="vinagrete"><input class="acc-jantinha" type="checkbox" name="vinagrete" id="vinagrete"> Vinagrete</label>
                 <label class="obs" for="obs">Observação: <input  type="text" name="obs" id="obs" autocomplete="off"></label>
             </div>
             <div class="butoes-detalhes">
@@ -112,8 +112,35 @@ function mostrarDetalhes(event) {
             </div>
         </div>
         `
-    } 
-    else {
+    }  else if (produto.classList.contains('hamburguer')) {
+        detalhes.innerHTML = `
+        <div class="dados-detalhes">
+            <div>
+                <img src="${p_imagem}" alt="${p_nome}">
+            </div>
+            <div class="dados-produto-detalhes">
+                <h2 class="nome-detalhes">${p_nome}</h2>
+                <p class="p-preco">R$ <samp class="preco-produto" >${p_preco}</samp></p>
+                <h3>Transforme em Combo mais R$12.50:</h3>
+                <p>Refri Lata e Batata Frita</p>
+                <label class="acc" for="combo"><input class="combo" type="checkbox" name="combo" id="combo"> Combo</label>
+            </div>
+            <div class="acompanhamentos">
+                <h3 class="tt-molhos">Molhos:</h3>
+                <label class="acc" for="barbecue"><input class="molhos" type="checkbox" name="barbecue" id="barbecue"> Barmecue</label>
+                <label class="acc" for="catchup"><input class="molhos" type="checkbox" name="catchup" id="catchup"> Catchup</label>
+                <label class="acc" for="alho"><input class="molhos" type="checkbox" name="alho" id="alho"> Molho de Alho</label>
+                <label class="acc" for="maionese"><input class="molhos" type="checkbox" name="maionese" id="maionese"> Maionese Grill</label>
+                <label class="acc" for="mostarda"><input class="molhos" type="checkbox" name="mostarda" id="mostarda"> Mostarda com Melaço</label>
+                <label class="obs" for="obs">Observação: <input  type="text" name="obs" id="obs" autocomplete="off"></label>
+            </div>
+            <div class="butoes-detalhes">
+                <button class="add-carrinho cancelar">Cancelar</button>
+                <button class="add-carrinho adicionar">Adicionar ao Carrinho</button>
+            </div>
+        </div>
+        `
+    } else {
         detalhes.innerHTML = `
         <div class="dados-detalhes">
             <div>
@@ -141,7 +168,7 @@ function mostrarDetalhes(event) {
         document.body.style.overflowY = 'scroll'
     })
 
-    const opcoes = detalhes.querySelectorAll('.acc > input')
+    const opcoes = detalhes.querySelectorAll('.acc-pratos')
     let quant = 0
     for (var i = 0; i < opcoes.length; i++) {
         opcoes[i].addEventListener('change', function () {

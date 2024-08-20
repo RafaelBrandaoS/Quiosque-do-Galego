@@ -174,7 +174,7 @@ def enviarPedido():
     cliente = session.get('cliente')
     pedido = session.get('pedido')
     total = session.get('total')
-    pedidos.enviarPedido(cliente, pedido, total)
+    pedidos.enviar_pedido(cliente, pedido, total)
     session.clear()
     return jsonify({'status': 'ok', 'cliente': cliente}), 200
 
