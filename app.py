@@ -249,5 +249,11 @@ def porcoes():
     por = produtos.porcoes()
     return render_template('porcoes.html', produtos=por)
 
+
+@app.route('/hamburguer')
+def hamburguer():
+    ham = produtos.hamburguers()
+    return render_template('hamburguer.html', produtos=ham)
+
 if __name__ == '__main__':
     app.run(debug=True)

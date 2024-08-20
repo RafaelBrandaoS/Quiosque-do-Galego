@@ -177,6 +177,8 @@ div.dados-produto-1 {
     display: flex;
     flex-direction: column;
     transition: 0.5s;
+    max-height: 80dvh;
+    overflow-y: auto;
 }
 
 .dados-detalhes {

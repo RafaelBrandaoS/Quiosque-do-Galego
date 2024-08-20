@@ -152,3 +152,14 @@ def porcoes():
     cursor.close()
     fexar_conexão(con)
     return produtos
+
+
+def hamburguers():
+    con = criar_conexao()
+    cursor = con.cursor()
+    sql = "select * from produtos where sessao_id = '13'"
+    cursor.execute(sql)
+    produtos = cursor.fetchall()
+    cursor.close()
+    fexar_conexão(con)
+    return produtos
