@@ -121,12 +121,13 @@ function mostrarDetalhes(event) {
             <div class="dados-produto-detalhes">
                 <h2 class="nome-detalhes">${p_nome}</h2>
                 <p class="p-preco">R$ <samp class="preco-produto" >${p_preco}</samp></p>
-                <h3>Transforme em Combo mais R$12.50:</h3>
+                <h3>Combo mais R$12.50:</h3>
                 <p>Refri Lata e Batata Frita</p>
                 <label class="acc" for="combo"><input class="combo" type="checkbox" name="combo" id="combo"> Combo</label>
             </div>
             <div class="acompanhamentos">
-                <h3 class="tt-molhos">Molhos:</h3>
+                <h3 class="tt-molhos">Escolha 1 Molho:</h3>
+                <p class="tt-molhos">extra será cobrado R$ 3.90 a mais</p>
                 <label class="acc" for="barbecue"><input class="molhos" type="checkbox" name="barbecue" id="barbecue"> Barmecue</label>
                 <label class="acc" for="catchup"><input class="molhos" type="checkbox" name="catchup" id="catchup"> Catchup</label>
                 <label class="acc" for="alho"><input class="molhos" type="checkbox" name="alho" id="alho"> Molho de Alho</label>
@@ -161,6 +162,7 @@ function mostrarDetalhes(event) {
         `
     }
     detalhes.classList.add('detalhes')
+    container.append(detalhes)
 
     const fexar = detalhes.getElementsByClassName('cancelar')[0]
     fexar.addEventListener("click", () => {
@@ -187,18 +189,65 @@ function mostrarDetalhes(event) {
         });
     }
 
+    const hamburguerCombo = detalhes.querySelector('.combo')
+    hamburguerCombo.addEventListener("change", function () {
+        const precoProduto = document.getElementsByClassName('preco-produto')[0].innerText
+        let valor = 12.50
+        if (this.checked) {
+            valor += +precoProduto
+            valor = valor.toFixed(2)
+            document.getElementsByClassName('preco-produto')[0].innerText = valor
+        } else {
+            valor = +precoProduto - +valor
+            valor = valor.toFixed(2)
+            document.getElementsByClassName('preco-produto')[0].innerText = valor
+        }
+    })
+
+    const hamburguerMolhos = detalhes.querySelectorAll('.molhos')
+    qtdMolho = 0
+    for (var i = 0; i < hamburguerMolhos.length; i++) {
+        hamburguerMolhos[i].addEventListener("change", function () {
+            const precoProduto = document.getElementsByClassName('preco-produto')[0].innerText
+            if (this.checked) {
+                qtdMolho += 1
+            } else {
+                qtdMolho -= 1
+            }
+            if (qtdMolho > 1) {
+                let valor = 0
+                if (hamburguerCombo.checked) {
+                    valor = (+p_preco + ((qtdMolho - 1) * 3.90)) + 12.50
+                    valor = valor.toFixed(2)
+                } else {
+                    valor = (+p_preco + ((qtdMolho - 1) * 3.90))
+                    valor = valor.toFixed(2)
+                }
+                document.getElementsByClassName('preco-produto')[0].innerText = valor
+            } else {
+                if (hamburguerCombo.checked) {
+                    let t = +p_preco + 12.50
+                    t = t.toFixed(2)
+                    document.getElementsByClassName('preco-produto')[0].innerText = t
+                } else {
+                    let t = +p_preco
+                    t = t.toFixed(2)
+                    document.getElementsByClassName('preco-produto')[0].innerText = t
+                }
+            }
+        })
+    }
+
     const opcoes = detalhes.querySelectorAll('.acc > input')
     for (var i = 0; i < opcoes.length; i++) {
         opcoes[i].addEventListener('change', function () {
             if (this.checked) {
-                console.log(this)
                 this.parentElement.classList.add('marcado')
             } else {
                 this.parentElement.classList.remove('marcado')
             }
         });
     }
-    container.append(detalhes)
     const addCarrinhoBtn = detalhes.getElementsByClassName('adicionar')[0]
     addCarrinhoBtn.addEventListener("click", obterDadosProduto)
 }
