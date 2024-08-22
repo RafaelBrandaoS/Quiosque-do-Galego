@@ -169,6 +169,8 @@ function mostrarDetalhes(event) {
         detalhes.remove()
         document.body.style.overflowY = 'scroll'
     })
+    const addCarrinhoBtn = detalhes.getElementsByClassName('adicionar')[0]
+    addCarrinhoBtn.addEventListener("click", obterDadosProduto)
 
     const pratosAcc =  detalhes.querySelectorAll('.acc-pratos')
     quant = 0
@@ -248,8 +250,6 @@ function mostrarDetalhes(event) {
             }
         });
     }
-    const addCarrinhoBtn = detalhes.getElementsByClassName('adicionar')[0]
-    addCarrinhoBtn.addEventListener("click", obterDadosProduto)
 }
 
 function carregarSessao(sessao) {
@@ -277,6 +277,7 @@ function carregarSessao(sessao) {
 }
 
 function obterDadosProduto(event) {
+    console.log('clicou!!!!');
     const container = event.target.parentElement.parentElement
     const img = container.querySelector('img').src
     const nome = container.getElementsByClassName('nome-detalhes')[0].innerText
