@@ -276,6 +276,12 @@ label.marcado {
     border: none;
 }
 
+.ilustrativas {
+    width: 100%;
+    text-align: center;
+}
+
+
 .loading {
     display: none;
     transition: .5s;
