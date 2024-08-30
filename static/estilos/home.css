@@ -373,14 +373,6 @@ footer {
     text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.424);
 }
 
-.container-lnk-admin {
-    width: 100%;
-}
-
-.lnk-admin {
-    padding: 3px;
-}
-
 .creditos {
     background: radial-gradient(#f7a145, #ff8400);
     font-size: 0.8em;
